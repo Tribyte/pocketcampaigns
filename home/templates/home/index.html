@@ -1,0 +1,11 @@
+{% extends 'home/base.htm' %}
+
+{% block main_head %}
+{% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'home/css/index.css' %}">
+{% endblock %}
+
+{% block content %}
+    <h2>Homepage</h2>
+    <p>Hello {{ user.username }}!</p>
+{% endblock %}

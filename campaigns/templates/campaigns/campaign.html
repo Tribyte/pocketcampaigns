@@ -1,0 +1,63 @@
+{% extends 'campaigns/base.htm' %}
+
+{% block head %}
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'campaigns/css/campaign.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'campaigns/css/cards.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'campaigns/css/bottom-right-nav.css' %}">
+  <style>.page-content { background-image: linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(255,255,255,0.6)), url('/static/campaigns/img/temp_campaign.jpg'); }</style>
+{% endblock %}
+
+{% block content %}
+  <div id="campaigns">
+    <div class="row" style="width: 100%">
+      <div class="page-title">
+        <h1>{{ campaign.title }}</h1>
+      </div>
+    </div>
+    <div class="row" style="width: calc(100% - 75px); margin: 10px;">
+      <div class="col-md-3">
+        <div class="card card--1">
+          <p class="card__description__full">{{ campaign.description }}</p>
+        </div>
+      </div>
+      {% if campaign.cards %}
+        {% for card in campaign.cards.all %}
+          <div class="col-md-3">
+            <div class="card card--1">
+              <div class="card__img" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url(/static/campaigns/img/temp_campaign.jpg);"></div>
+              <a href="/campaigns/{{ campaign.id }}/c{{ card.id }}" class="card_link">
+                <div class="card__img--hover" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url(/static/campaigns/img/temp_campaign.jpg);"></div>
+               </a>
+              <div class="card__info">
+                <h3 class="card__title">{{ card.name }}</h3>
+                <span class="card__category">{% for tag in card.tags.all %}{% if tag.id == card.tags.last.id %}{{ tag.tag }}{% else %}{{ tag.tag }}, {% endif %}{% endfor %}</span>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+  <div id="bottom-nav" class="bottom-nav">
+    <button id="btn-03" type="button"><i class="fas fa-search"></i></button>
+    {% if request.user.id == campaign.user.id %}
+      <button id="btn-03" class="btn-green" onclick="window.location = '/campaigns/{{ campaign.id }}/edit';" type="button"><i class="fas fa-edit"></i></button>
+      <button id="btn-02" class="btn-green" onclick="document.getElementById('id01').style.display='block'" type="button"><i class="fas fa-plus"></i></button>
+      <button id="btn-01" class="btn-red" onclick="document.getElementById('id02').style.display='block'" type="button"><i class="fas fa-times"></i></button>
+    {% endif %}
+    <button id="button-menu" type="button"><i class="fas fa-bars"></i></button>
+  </div>
+  {% if request.user.id == campaign.user.id %}
+    <div id="id02" class="modal">
+      <div class="delete-form">
+        <div class="page-title">
+          <h1>Are you sure you want to delete: {{ campaign.title }}</h1>
+          <input type="button" class="close-modal2" value="Cancel" onclick="closeModel('id02')">
+          <input type="button" class="delete" value="Delete" onclick="window.location = '/campaigns/delete/{{ campaign.id }}';">
+        </div>
+      </div>
+    </div>
+    <script src="{% static 'campaigns/js/campaign.js' %}" type="text/javascript"></script>
+  {% endif %}
+{% endblock %}

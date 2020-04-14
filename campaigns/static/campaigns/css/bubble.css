@@ -1,0 +1,24 @@
+.speech_bubble {
+  position: absolute;
+  background-color: #fff;
+  border-radius: 10px;
+  transform-origin: bottom right;
+  transform-style: preserve-3D;
+  transition: transform .15s ease-in;
+  transform: scale(0);
+  z-index: 10;
+}
+
+.speech_bubble::after {
+  border-left: 20px solid transparent;
+  border-top: 20px solid #fff;
+  bottom: -20px;
+  content: "";
+  position: absolute;
+  right: 10px;
+  z-index: 10;
+}
+
+.speech_bubble_expand {
+  transform: scale(1);
+}

@@ -1,0 +1,110 @@
+.todo .top_bar {
+  width: 100%;
+  padding: 10px 0;
+}
+
+.todo .top_bar input {
+  width: 70%;
+  border: 0;
+  margin: 0;
+  font-size: 1.1em;
+  background-color: #e8eeef;
+  color: #8a97a0;
+  padding: 10px;
+  border-radius: 8px 0 0 8px;
+  margin-left: 20px;
+}
+
+.todo .top_bar button {
+  border: 0;
+  width: calc(30% - 60px);
+  font-size: 1.1em;
+  padding: 10px;
+  cursor: pointer;
+  color: #8a97a0;
+  background-color: #A3EEC7;
+  transition: .25s ease-in;
+  border-radius: 0 8px 8px 0;
+}
+
+.todo .top_bar button:hover {
+  color: #4a5760;
+  background-color: #a3fec7;
+}
+
+.todo .list ul {
+  text-align: left;
+  padding-left: 20px;
+  padding-right: 20px;
+  list-style: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.todo .list li:first-child .item {
+  border-radius: 8px 8px 0 0;
+}
+
+.todo .list li:last-child .item{
+  border-radius: 0 0 8px 8px;
+}
+
+.todo li:first-child:hover .item {
+  border-radius: 8px 0 0 0;
+}
+
+.todo li:last-child:hover .item{
+  border-radius: 0 0 0 8px;
+}
+
+.todo .list .item {
+  font-size: 1.1em;
+  width: calc(100% - 20px);
+  float: left;
+  padding: 10px;
+  background-color: #e8eeef;
+  color: #8a97a0;
+  height: auto;
+  transition: .25s ease-in;
+  opacity: .7
+}
+
+.todo .list li:hover .item {
+  width: 80%;
+  opacity: 1;
+}
+
+.todo span {
+  opacity: 0;
+  transition: .5s ease-in;
+}
+
+.todo .delete {
+  border: 0;
+  background-color: #B25750;
+  font-size: 1.1em;
+  width: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 0;
+  padding-right: 0;
+  overflow: hidden;
+  transition: .25s ease-in;
+  color: #fff;
+}
+
+.todo .list li:hover .delete {
+  width: calc(calc(100% - 20px) - 80%);
+}
+
+.todo li:first-child .delete {
+  border-radius: 0 8px 0 0;
+}
+
+.todo li:last-child .delete{
+  border-radius: 0 0 8px 0;
+}
+
+.todo .checked {
+  opacity: 1;
+}

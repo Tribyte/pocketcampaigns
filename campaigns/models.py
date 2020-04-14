@@ -17,7 +17,7 @@ class Tag(models.Model):
         return self.tag
 
 class Card(models.Model):
-    img = models.ImageField(blank=True, null=True)
+    img = models.ImageField(upload_to='card/', blank=True, null=True)
     name = models.CharField(max_length=256, blank=True, null=True)
     identifiers = models.ManyToManyField(Note, related_name="identifier", blank=True)
     description = models.TextField(blank=True, null=True)
@@ -28,7 +28,7 @@ class Card(models.Model):
 
 class Campaign(models.Model):
     private = models.BooleanField(blank=True, null=True)
-    img = models.ImageField(blank=True, null=True)
+    img = models.ImageField(upload_to='campaign/', blank=True, null=True)
     title = models.CharField(max_length=256, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET(get_sentinel_user), blank=True, null=True)

@@ -49,6 +49,8 @@ def new_campaign(request):
             c.user = request.user
             c.title = request.POST.get("title")
             c.description = request.POST.get("description")
+            if(request.POST.get("hasImg") == "true"):
+                c.img = request.FILES['img']
             c.save()
             return HttpResponse(json.dumps(str(c.id)), content_type="application/json")
         else:

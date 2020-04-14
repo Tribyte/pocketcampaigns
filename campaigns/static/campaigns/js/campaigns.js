@@ -22,13 +22,25 @@ $(document).ready(function(){
   });
   //new campaign
   $("#create_card").click(function () {
-    var title = $("#campaign_title").val();
-    var description = $("#campaign_description").val();
-    var author = $("#campaign_author").val();
+    var form_data = new FormData($('form').get(0));
+    if (document.getElementById("campaign_img").files.length == 0) {
+      form_data.append('hasImg', "false")
+    }
+    else {
+      form_data.append('hasImg', "true")
+      var file_data = $('#campaign_img').prop('files')[0];
+    }
+    form_data.append('img', file_data);
+    form_data.append('title', $("#campaign_title").val());
+    form_data.append('description', $("#campaign_description").val());
+    form_data.append('author', $("#campaign_author").val());
+
     $.ajax({
       type: "POST",
       url: "/api/new_campaign",
-      data: "title=" + title + "&description=" + description + "&author=" + author,
+      data: form_data,
+      contentType: false,
+      processData: false,
       success: function (data) {
         if(data != "invalid credentials"){
           location.reload();

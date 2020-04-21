@@ -20,7 +20,7 @@ def user_register(request):
         print(password, check_pass)
         if(password != check_pass):
             return HttpResponse(json.dumps("passwords don't match"), content_type="application/json")
-        
+
         user = User.objects.create_user(username, "", password)
         auth_user = authenticate(username=username, password=password)
         login(request, auth_user)
@@ -53,6 +53,27 @@ def new_campaign(request):
                 c.img = request.FILES['img']
             c.save()
             return HttpResponse(json.dumps(str(c.id)), content_type="application/json")
+        else:
+            return HttpResponse(json.dumps("invalid credentials"), content_type="application/json")
+    else:
+        return Http404
+
+def edit_campaign(request):
+    if request.is_ajax():
+        if(request.POST.get("author") == request.user.username):
+            print("//Todo: fix me")
+    else:
+        return Http404
+
+
+def delete_campaign(request):
+    if request.is_ajax():
+        if(request.POST.get("author") == request.user.username):
+
+            Campaign.objects.get(id=request.POST.get("id")).img.delete()
+            Campaign.objects.get(id=request.POST.filter("id")).delete()
+
+            return HttpResponse(json.dumps("deleted"), content_type="application/json")
         else:
             return HttpResponse(json.dumps("invalid credentials"), content_type="application/json")
     else:

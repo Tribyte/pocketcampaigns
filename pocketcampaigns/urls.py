@@ -14,6 +14,7 @@ urlpatterns = [
     url(r'^oauth/', include('social_django.urls', namespace='social')),
     url(r'^api/', include('api.urls')),
     url(r'^campaigns/', include('campaigns.urls')),
+    url(r'^adventurer/', include('adventurer.urls')),
 
     #default
     path('', include('home.urls')),

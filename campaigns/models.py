@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.db import models
+from adventurer.models import Party
 
 def get_sentinel_user():
     return get_user_model().objects.get_or_create(username='deleted')[0]
@@ -31,7 +32,9 @@ class Campaign(models.Model):
     img = models.ImageField(upload_to='campaign/', blank=True, null=True)
     title = models.CharField(max_length=256, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET(get_sentinel_user), blank=True, null=True)
+    creator = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET(get_sentinel_user), blank=True, null=True, related_name="creator")
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET(get_sentinel_user), blank=True, null=True, related_name="owner")
+    parties = models.ManyToManyField(Party, blank=True)
     cards = models.ManyToManyField(Card, blank=True)
     tags = models.ManyToManyField(Tag, blank=True)
     def __str__(self):

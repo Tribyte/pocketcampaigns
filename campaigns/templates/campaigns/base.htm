@@ -2,9 +2,16 @@
 
 {% block main_head %}
     {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'home/css/cards.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'campaigns/css/base.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'campaigns/css/bottom-right-nav.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'campaigns/css/bubble.css' %}">
     
     {% block head %}
-        <!-- nothing here yet -->
     {% endblock %}
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'campaigns/js/bubble.js' %}" type="text/javascript"></script>
 {% endblock %}

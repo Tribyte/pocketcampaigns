@@ -9,7 +9,7 @@ def page_not_found(request, exception):
 def index(request):
     if(request.user.is_authenticated):
         context = {}
-        return render(request, 'home/index.html', context)
+        return HttpResponseRedirect('adventurer/' + request.user.username)
     else:
         context = {}
         return render(request, 'home/home.html', context)
@@ -20,4 +20,4 @@ def login(request):
 
 def logout(request):
     django_logout(request)
-    return  HttpResponseRedirect('/')
+    return HttpResponseRedirect('/')

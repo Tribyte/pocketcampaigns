@@ -3,8 +3,6 @@
 {% block head %}
   {% load static %}
   <link rel="stylesheet" type="text/css" href="{% static 'campaigns/css/campaign.css' %}">
-  <link rel="stylesheet" type="text/css" href="{% static 'campaigns/css/cards.css' %}">
-  <link rel="stylesheet" type="text/css" href="{% static 'campaigns/css/bottom-right-nav.css' %}">
   <style>.page-content { background-image: linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(255,255,255,0.6)), url('{% if campaign.img %}{{ MEDIA_URL }}{{ campaign.img.url }}{% else %}/static/campaigns/img/temp_campaign.jpg{% endif %}'); }</style>
 {% endblock %}
 
@@ -24,40 +22,90 @@
       {% if campaign.cards %}
         {% for card in campaign.cards.all %}
           <div class="col-md-3">
+            {% if not card.img %}<a href="/campaigns/{{ campaign.id }}/card/{{ card.id }}" class="card_link">{% endif %}
             <div class="card card--1">
-              <div class="card__img" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url(/static/campaigns/img/temp_campaign.jpg);"></div>
-              <a href="/campaigns/{{ campaign.id }}/c{{ card.id }}" class="card_link">
-                <div class="card__img--hover" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url(/static/campaigns/img/temp_campaign.jpg);"></div>
-               </a>
+              {% if card.img %}
+                <div class="card__img" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url('{{ MEDIA_URL }}{{ card.img.url }}');"></div>
+              {% endif %}
+              {% if card.img %}
+                <a href="/campaigns/{{ campaign.id }}/card/{{ card.id }}" class="card_link">
+                  <div class="card__img--hover" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url('{{ MEDIA_URL }}{{ card.img.url }}');"></div>
+                </a>
+              {% endif %}
               <div class="card__info">
                 <h3 class="card__title">{{ card.name }}</h3>
-                <span class="card__category">{% for tag in card.tags.all %}{% if tag.id == card.tags.last.id %}{{ tag.tag }}{% else %}{{ tag.tag }}, {% endif %}{% endfor %}</span>
-              </div>
+                  <span class="card__category">{% for tag in card.tags.all %}{% if tag.id == card.tags.last.id %}{{ tag.tag }}{% else %}{{ tag.tag }}, {% endif %}{% endfor %}</span>
+                </div>
             </div>
+            {% if not card.img %}</a>{% endif %}
           </div>
         {% endfor %}
       {% endif %}
     </div>
   </div>
   <div id="bottom-nav" class="bottom-nav">
-    <button id="btn-03" type="button"><i class="fas fa-search"></i></button>
-    {% if request.user.id == campaign.user.id %}
-      <button id="btn-03" class="btn-green" onclick="window.location = '/campaigns/{{ campaign.id }}/edit';" type="button"><i class="fas fa-edit"></i></button>
-      <button id="btn-02" class="btn-green" onclick="document.getElementById('id01').style.display='block'" type="button"><i class="fas fa-plus"></i></button>
-      <button id="btn-01" class="btn-red" onclick="document.getElementById('id02').style.display='block'" type="button"><i class="fas fa-times"></i></button>
+    <div class="speech_bubble" id="speech_bubble_box">
+      <form id="new_card_form" accept-charset="UTF-8" method="post">
+        <div class="left_half">
+          <a href="{{ campaign.id }}" class="card_link">
+            <input type="file" name="card_img" id="card_img" class="card_img" onchange="upload_img(this)" multiple=false>
+            <label class="card__img--hover" for="card_img" id="card_img_label" style="background-image: url(/static/campaigns/img/folder.png);">
+          </a>
+          <div class="img_spacer_div" style="margin-top: 236px; width: 100%"></div>
+          <div class="card__info">
+            <div class="todo">
+              <div class="top_bar">
+                <label for="tag_input">Tags</label>
+                <input type="text" id="tag_input" name="tag_input" maxlength="20"></input>
+                <button id="add_tag" class="btn-green" type="button">add</button>
+              </div>
+              <div class="list">
+                <ul id="search_list">
+                  {% for tag in campaign.tags.all %}
+                    <li id="li{{ tag.id }}">
+                      <div class="item" id="c{{ tag.id }}">
+                        <span class="{% if tag in card.tags.all %}checked{% endif %}">&#10004;</span> {{ tag.tag }}
+                      </div>
+                      <button class="delete btn-red" id="d{{ tag.id }}">X</button>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="right_half">
+          <div class="card__info">
+            <span class="card__category">DM Only</span>
+
+            <div style="width: 100%; padding-top: 0px;"></div>
+            <label for="card_title">Card Title:</label>
+            <input type="text" name="card_title" id="card_title" value="">
+
+            <label for="card_description">Description:</label>
+            <textarea type="text" name="card_description" id="card_description" value=""></textarea>
+
+            <label for="asdf">DM Notes:</label>
+            <textarea type="text" name="asdf" id="asdf" value=""></textarea>
+                <input type="hidden" id="card_parent" value="{{ campaign.id }}">
+                <input type="hidden" id="card_author" value="{{ request.user.username }}">
+
+            <button id="create_card" type="button">Create Card</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    {% if request.user.id == campaign.owner.id %}
+      <button id="btn-04" type="button"><i class="fas fa-search"></i></button>
+      {% comment %} <button id="btn-03" class="btn-green" type="button"><i class="fas fa-edit"></i></button> {% endcomment %}
+      <button id="btn-02" class="btn-green speech_button" type="button"><i class="fas fa-plus"></i></button>
+      <button id="btn-01" class="btn-red" type="button"><i class="fas fa-times"></i></button>
+    {% else %}
+      <button id="btn-01" type="button"><i class="fas fa-search"></i></button>
     {% endif %}
     <button id="button-menu" type="button"><i class="fas fa-bars"></i></button>
   </div>
-  {% if request.user.id == campaign.user.id %}
-    <div id="id02" class="modal">
-      <div class="delete-form">
-        <div class="page-title">
-          <h1>Are you sure you want to delete: {{ campaign.title }}</h1>
-          <input type="button" class="close-modal2" value="Cancel" onclick="closeModel('id02')">
-          <input type="button" class="delete" value="Delete" onclick="window.location = '/campaigns/delete/{{ campaign.id }}';">
-        </div>
-      </div>
-    </div>
+  {% if request.user.id == campaign.owner.id %}
     <script src="{% static 'campaigns/js/campaign.js' %}" type="text/javascript"></script>
   {% endif %}
 {% endblock %}

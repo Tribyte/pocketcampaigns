@@ -3,11 +3,13 @@ from django.http import HttpResponse, HttpResponseRedirect, Http404
 from .models import Campaign, Tag
 
 def campaigns(request):
+    if(request.user.is_anonymous):
+        raise Http404()
     context = {}
-    context['campaigns'] = Campaign.objects.filter(user=request.user)
+    context['campaigns'] = Campaign.objects.filter(owner=request.user)
     return render(request, 'campaigns/campaigns.html', context)
 
-def campaign(request, campaign_id, user_id=-1):
+def campaign(request, campaign_id):
     context = {}
     context['campaign_id'] = campaign_id
     context['campaign'] = Campaign.objects.get(pk=campaign_id)

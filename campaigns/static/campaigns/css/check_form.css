@@ -21,15 +21,7 @@
   font-size: 1.1em;
   padding: 10px;
   cursor: pointer;
-  color: #8a97a0;
-  background-color: #A3EEC7;
-  transition: .25s ease-in;
   border-radius: 0 8px 8px 0;
-}
-
-.todo .top_bar button:hover {
-  color: #4a5760;
-  background-color: #a3fec7;
 }
 
 .todo .list ul {
@@ -81,7 +73,6 @@
 
 .todo .delete {
   border: 0;
-  background-color: #B25750;
   font-size: 1.1em;
   width: 0;
   padding-top: 10px;

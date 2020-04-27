@@ -6,8 +6,13 @@ body {
   line-height: 0 !important;
 }
 
-h1, h2, h3, h4, h5, p, li, a, span {
+h1, h2, h3, h4, h5, p, li, a, span, label {
   font-family: 'Kodchasan', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: #212529 !important;
 }
 
 .footer-fix {
@@ -15,8 +20,7 @@ h1, h2, h3, h4, h5, p, li, a, span {
 }
 
 .page-content {
-  height: 100vh;
-  overflow-y: hidden;
+  min-height: 100vh;
   line-height: 1.5;
 }
 

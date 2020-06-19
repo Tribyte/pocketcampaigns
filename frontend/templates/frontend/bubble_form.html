@@ -1,0 +1,24 @@
+<div class="speech_bubble">
+    <form id="new_card_form" accept-charset="UTF-8" method="post">
+        {% csrf_token %}
+        <a href="{{ campaign.id }}" class="card_link">
+            <input type="file" name="campaign_img" id="campaign_img" class="campaign_img" onchange="upload_img(this)" multiple=false>
+            <label class="card__img--hover" for="campaign_img" id="campaign_img_label" style="background-image: url(/static/campaigns/img/folder.png);">
+        </a>
+        <div class="card__info" style="margin-top: 236px;">
+            <span class="card__category">Public</span>
+            <div style="width: 100%; padding-top: 0px;"></div>
+
+            <label for="campaign_title">Campaign Title:</label>
+            <input type="text" name="campaign_title" id="campaign_title" value="">
+
+            <label for="campaign_description">Description:</label>
+            <textarea type="text" name="campaign_description" id="campaign_description" value=""></textarea>
+
+            <span class="card__by">by <a class="card__author" title="author">{{ request.user.username }}</a></span>
+            <input type="hidden" id="campaign_author" value="{{ request.user.username }}">
+
+            <button id="create_campaign" class="rect_green btn-green" type="button">Create Campaign</button>
+        </div>
+    </form>
+</div>

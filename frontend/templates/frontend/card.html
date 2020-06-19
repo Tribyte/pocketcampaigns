@@ -1,18 +1,20 @@
-<div class="col-md-3">
-    <div class="card card--1">
-        <div class="card__info-hover">
-            <span class="card__delete"><i id="delete_campaign" class="fas fa-times"></i></span>
-            <input type="hidden" id="campaign_id" value="{{ campaign.id }}">
-        </div>
-        <div class="card__img" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url('{% if campaign.img %}{{ MEDIA_URL }}{{ campaign.img.url }}{% else %}/static/campaigns/img/temp_campaign.jpg{% endif %}');"></div>
-        <a href="{{ campaign.id }}" class="card_link">
-            <div class="card__img--hover" style="background-image: linear-gradient(to bottom, rgba(255,255,255,0.3), rgba(255,255,255,0.1)), url('{% if campaign.img %}{{ MEDIA_URL }}{{ campaign.img.url }}{% else %}/static/campaigns/img/temp_campaign.jpg{% endif %}');"></div>
-        </a>
-        <div class="card__info">
-            <span class="card__category">Public</span>
-            <h3 class="card__title">{{ campaign.title }}</h3>
-            <p class="card__description">{{ campaign.description }}</p>
-            <span class="card__by">by <a href="" class="card__author" title="author">{{ campaign.creator.username }}</a></span>
+{% if card_type == 'full' %}
+    <div class="col-md-{{ width }}">
+        <div class="card card--1">
+            <div class="card__info-hover">
+                {% comment %} <span class="card__delete"><i id="card_delete" class="fas fa-times"></i></span> {% endcomment %}
+                <input type="hidden" id="id" value="{{ id }}">
+            </div>
+            <div class="card__img" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url('{% if img %}{{ MEDIA_URL }}{{ img.url }}{% else %}{{ default_img }}{% endif %}');"></div>
+            <a href="{{ id }}" class="card_link">
+                <div class="card__img--hover" style="background-image: linear-gradient(to bottom, rgba(255,255,255,0.3), rgba(255,255,255,0.1)), url('{% if img %}{{ MEDIA_URL }}{{ img.url }}{% else %}{{ default_img }}{% endif %}');"></div>
+            </a>
+            <div class="card__info">
+                <span class="card__category">{% if privacy %}Private{% else %}Public{% endif %}</span>
+                <h3 class="card__title">{{ title }}</h3>
+                <p class="card__description">{{ description }}</p>
+                <span class="card__by">by <a href="" class="card__author" title="author">{{ author }}</a></span>
+            </div>
         </div>
     </div>
-</div>
+{% endif %}

@@ -8,8 +8,6 @@
 {% block content %}
   {% include 'frontend/page_titles.html' with title='Campaign Deck' %}
 
-  
-
   {% if request.user.id == campaign.owner.id %}
     <script src="{% static 'campaigns/js/campaign.js' %}" type="text/javascript"></script>
   {% endif %}

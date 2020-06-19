@@ -1,3 +1,11 @@
 #add_tag {
     color: #fff;
 }
+
+.speech_bubble {
+  right: 110px;
+  bottom: 220px;
+  width: 400px;
+  height: 550px;
+  border-radius: 10px;
+}

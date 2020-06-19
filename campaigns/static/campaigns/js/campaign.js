@@ -48,5 +48,5 @@ $(document).ready(function(){
     });
   });
   //csrf
-  $.getScript('/static/campaigns/js/csrfCookieToken.js', function () {});
+  $.getScript('/static/frontend/js/csrfCookieToken.js', function () {});
 });

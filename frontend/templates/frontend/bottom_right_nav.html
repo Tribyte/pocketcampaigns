@@ -1,0 +1,17 @@
+<div id="bottom_right_nav" class="bottom-nav">
+
+    {% for button in buttons.split %}
+        {% if button == 'search' %}
+            <button id="btn-{{ forloop.counter }}" class="btn-search" type="button"><i class="fas fa-search"></i></button>
+        {% elif button == 'edit' %}
+            <button id="btn-{{ forloop.counter }}" class="btn-green btn-edit" type="button"><i class="fas fa-edit"></i></button>
+        {% elif button == 'add'%}
+            <button id="btn-{{ forloop.counter }}" class="btn-green btn-add" type="button"><i class="fas fa-plus"></i></button>
+        {% elif button == 'remove' %}
+            <button id="btn-{{ forloop.counter }}" class="btn-red btn-remove" type="button"><i class="fas fa-times"></i></button>
+        {% endif %}
+    {% endfor %}
+
+    <button id="button-menu" class="btn-menu" type="button"><i class="fas fa-bars"></i></button>
+
+</div>

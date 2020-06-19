@@ -51,7 +51,7 @@
       </div>
     </div>
   </div>
-  <div id="bottom-nav" class="bottom-nav">
+  
     <div class="speech_bubble">
       <form id="new_card_form" accept-charset="UTF-8" method="post">
           <a href="{{ campaign.id }}" class="card_link">
@@ -78,15 +78,7 @@
     <input type="hidden" id="card_parent" value="{{ campaign.id }}">
     <input type="hidden" id="card_author" value="{{ request.user.username }}">
     <input type="hidden" id="card_id" value="{{ card.id }}">
-    {% if request.user.id == campaign.owner.id %}
-      <button id="btn-04" type="button"><i class="fas fa-search"></i></button>
-      <button id="btn-03" class="btn-green" type="button"><i class="fas fa-edit"></i></button>
-      <button id="btn-02" class="btn-green speech_button" type="button"><i class="fas fa-plus"></i></button>
-      <button id="btn-01" class="btn-red" type="button"><i class="fas fa-times"></i></button>
-    {% else %}
-      <button id="btn-01" type="button"><i class="fas fa-search"></i></button>
-    {% endif %}
-    <button id="button-menu" type="button"><i class="fas fa-bars"></i></button>
+
   </div>
   {% if request.user.id == campaign.owner.id %}
     <script src="{% static 'campaigns/js/card.js' %}" type="text/javascript"></script>

@@ -1,0 +1,132 @@
+.btn-green {
+  background-color: #4CAF50 !important;
+}
+
+.btn-red {
+  background-color: #f44336 !important;
+}
+
+#bottom_right_nav button {
+  border: none;
+  background-color: #0a2239;
+  color: #fff;
+  height: 60px;
+  width: 60px;
+  margin-top: 10px;
+  border-radius: 100%;
+  position: fixed;
+  bottom: 20px;
+  right: 40px;
+}
+
+#btn-1 {
+  -webkit-animation-name: btn-1-reverse-animation;
+  -webkit-animation-duration: .5s;
+  animation-name: btn-1-reverse-animation;
+  animation-duration: .5s;
+  transform: translate(0, 0);
+}
+
+#btn-2 {
+  -webkit-animation-name: btn-2-reverse-animation;
+  -webkit-animation-duration: .5s;
+  animation-name: btn-2-reverse-animation;
+  animation-duration: .5s;
+  transform: translate(0, 0);
+}
+
+#btn-3 {
+  -webkit-animation-name: btn-3-reverse-animation;
+  -webkit-animation-duration: .5s;
+  animation-name: btn-3-reverse-animation;
+  animation-duration: .5s;
+  transform: translate(0, 0);
+}
+
+.open #btn-1 {
+  -webkit-animation-name: btn-1-animation;
+  -webkit-animation-duration: .5s;
+  animation-name: btn-1-animation;
+  animation-duration: .5s;
+  transform: translate(0, -70px);
+}
+
+.open #btn-2 {
+  -webkit-animation-name: btn-2-animation;
+  -webkit-animation-duration: .5s;
+  animation-name: btn-2-animation;
+  animation-duration: .5s;
+  transform: translate(0, -140px);
+}
+
+.open #btn-3 {
+  -webkit-animation-name: btn-3-animation;
+  -webkit-animation-duration: .5s;
+  animation-name: btn-3-animation;
+  animation-duration: .5s;
+  transform: translate(0, -210px);
+}
+
+@-webkit-keyframes btn-1-animation {
+  from {transform: translate(0, 0);}
+  to {transform: translate(0, -70px);}
+}
+
+@keyframes btn-1-animation {
+  from {transform: translate(0, 0);}
+  to {transform: translate(0, -70px);}
+}
+
+@-webkit-keyframes btn-2-animation {
+  from {transform: translate(0, 0);}
+  to {transform: translate(0, -140px);}
+}
+
+@keyframes btn-2-animation {
+  from {transform: translate(0, 0);}
+  to {transform: translate(0, -140px);}
+}
+
+@-webkit-keyframes btn-3-animation {
+  from {transform: translate(0, 0);}
+  to {transform: translate(0, -210px);}
+}
+
+@keyframes btn-3-animation {
+  from {transform: translate(0, 0);}
+  to {transform: translate(0, -210px);}
+}
+
+@-webkit-keyframes btn-1-reverse-animation {
+  from {transform: translate(0, -70px);}
+  to {transform: translate(0, 0);}
+}
+
+@keyframes btn-1-reverse-animation {
+  from {transform: translate(0, -70px);}
+  to {transform: translate(0, 0);}
+}
+
+@-webkit-keyframes btn-2-reverse-animation {
+  from {transform: translate(0, -140px);}
+  to {transform: translate(0, 0);}
+}
+
+@keyframes btn-2-reverse-animation {
+  from {transform: translate(0, -140px);}
+  to {transform: translate(0, 0);}
+}
+
+@-webkit-keyframes btn-3-reverse-animation {
+  from {transform: translate(0, -210px);}
+  to {transform: translate(0, 0);}
+}
+
+@keyframes btn-3-reverse-animation {
+  from {transform: translate(0, -210px);}
+  to {transform: translate(0, 0);}
+}
+
+#bottom_right_nav button i {
+  font-size: 1.5em;
+}

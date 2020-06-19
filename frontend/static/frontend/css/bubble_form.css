@@ -1,0 +1,115 @@
+.speech_bubble {
+  position: absolute;
+  background-color: #fff;
+  border-radius: 12px;
+  transform-origin: bottom right;
+  transform-style: preserve-3D;
+  transition: transform .15s ease-in;
+  transform: scale(0);
+  z-index: 10;
+}
+
+.speech_bubble::after {
+  border-left: 20px solid transparent;
+  border-top: 20px solid #fff;
+  bottom: -20px;
+  content: "";
+  position: absolute;
+  right: 10px;
+  z-index: 10;
+}
+
+.speech_bubble_expand {
+  transform: scale(1);
+}
+
+.campaign_img, .card_img {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.rect_green {
+  border-radius: 12px !important;
+  width: auto !important;
+  height: auto !important;
+  padding: 8px !important;
+}
+
+.speech_bubble textarea {
+  width: 100%;
+}
+
+.speech_bubble input {
+  width: 100%;
+}
+
+.left_half {
+  width: 50%;
+  float: left;
+}
+
+.right_half {
+  width: 50%;
+  float: right;
+}
+
+.right_half div {
+  border-top-right-radius: 12px;
+}
+
+#campaign_img_label {
+  cursor: pointer;
+}
+
+/* default bubble input fields look */
+.card__info label {
+  margin-top: 20px;
+  font-size: 13px;
+  letter-spacing: 2px;
+  font-weight: 500;
+  color: #666;
+}
+
+input[type=text], input[type=password] {
+  font-family: 'Kodchasan', sans-serif;
+  width: 100%;
+  display: inline-block;
+  border: 0;
+  border-bottom: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+textarea {
+  font-family: 'Kodchasan', sans-serif;
+  width: 100%;
+  height: 70px;
+  display: inline-block;
+  border: 0;
+  border-bottom: 1px solid #ccc;
+  box-sizing: border-box;
+  resize: none;
+}
+
+.todo label {
+  width: 100%;
+}
+
+.todo input {
+  width: 75%;
+  float: left;
+  padding: 0px;
+}
+
+.todo button {
+  position: relative;
+  bottom: auto;
+  right: auto;
+  width: 25%;
+  height: auto;
+  border-radius: 0 8px 8px 0;
+  margin: 0; 
+}

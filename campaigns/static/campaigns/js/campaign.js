@@ -21,20 +21,20 @@ $(document).ready(function(){
     });
   });
   //new card
-  $("#create_card").click(function () {
+  $("#submit").click(function () {
     var form_data = new FormData($('form').get(0));
-    if (document.getElementById("card_img").files.length == 0) {
+    if (document.getElementById("img").files.length == 0) {
       form_data.append('hasImg', "false")
     }
     else {
       form_data.append('hasImg', "true")
-      var file_data = $('#card_img').prop('files')[0];
+      var file_data = $('#img').prop('files')[0];
     }
     form_data.append('img', file_data);
-    form_data.append('title', $("#card_title").val());
-    form_data.append('description', $("#card_description").val());
-    form_data.append('parent', $("#card_parent").val());
-    form_data.append('author', $("#card_author").val());
+    form_data.append('title', $("#title").val());
+    form_data.append('description', $("#description").val());
+    form_data.append('parent', $("#parent").val());
+    form_data.append('author', $("#author").val());
 
     $.ajax({
       type: "POST",

@@ -11,12 +11,12 @@
     <div class="row" style="width: calc(100% - 75px); margin: 10px;">
         {% if campaigns %}
             {% for campaign in campaigns %}
-                {% include 'frontend/card.html' with card_type='full' width=3 id=campaign.id privacy=campaign.private title=campaign.title description=campaign.description author=campaign.creator.username img=campaign.img default_img='/static/campaigns/img/temp_campaign.jpg' %}
+                {% include 'frontend/card.html' with card_type='full' width=3 id=campaign.id has_img=True privacy=campaign.private title=campaign.title description=campaign.description author=campaign.creator.username img=campaign.img default_img='/static/campaigns/img/temp_campaign.jpg' %}
             {% endfor %}
         {% endif %}
     </div>
 
-    {% include 'frontend/bubble_form.html' %}
-    {% include 'frontend/bottom_right_nav.html' with buttons='remove add' %}
+    {% include 'frontend/bubble_form.html' with form_type="single_column" img_displayed=True author_displayed=True title_label="Campaign Title" checked_label="Private" unchecked_label="Public" button_label="Create Campaign" %}
+    {% include 'frontend/bottom_right_nav.html' with buttons='upload remove add' %}
     <script src="{% static 'campaigns/js/campaigns.js' %}" type="text/javascript"></script>
 {% endblock %}

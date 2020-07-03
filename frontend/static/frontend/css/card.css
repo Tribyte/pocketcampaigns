@@ -45,7 +45,6 @@
 .card__info-hover {
   position: absolute;
   padding: 16px;
-  width: 100%;
   opacity: 0;
   top: 0;
 }

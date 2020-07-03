@@ -34,3 +34,9 @@
   cursor: pointer;
   width: 50%;
 }
+
+.card__description {
+  overflow: visible;
+  white-space: normal;
+  text-overflow: initial;
+}

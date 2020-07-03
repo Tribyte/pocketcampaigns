@@ -9,6 +9,8 @@
             <button id="btn-{{ forloop.counter }}" class="btn-green btn-add" type="button"><i class="fas fa-plus"></i></button>
         {% elif button == 'remove' %}
             <button id="btn-{{ forloop.counter }}" class="btn-red btn-remove" type="button"><i class="fas fa-times"></i></button>
+        {% elif button == 'upload' %}
+            <button id="btn-{{ forloop.counter }}" class="btn-upload" type="button"><i class="fas fa-upload"></i></button>
         {% endif %}
     {% endfor %}
 

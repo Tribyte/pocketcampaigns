@@ -1,24 +1,99 @@
 <div class="speech_bubble">
-    <form id="new_card_form" accept-charset="UTF-8" method="post">
-        {% csrf_token %}
-        <a href="{{ campaign.id }}" class="card_link">
-            <input type="file" name="campaign_img" id="campaign_img" class="campaign_img" onchange="upload_img(this)" multiple=false>
-            <label class="card__img--hover" for="campaign_img" id="campaign_img_label" style="background-image: url(/static/campaigns/img/folder.png);">
-        </a>
-        <div class="card__info" style="margin-top: 236px;">
-            <span class="card__category">Public</span>
-            <div style="width: 100%; padding-top: 0px;"></div>
+    <div class="row" style="padding: 0; margin: 0; height: 100%">
+        <form id="new_card_form" accept-charset="UTF-8" method="post" style="width: 100%;">
+            {% csrf_token %}
 
-            <label for="campaign_title">Campaign Title:</label>
-            <input type="text" name="campaign_title" id="campaign_title" value="">
+            {% if form_type == 'single_column' %}
+                {% if img_displayed %}
+                    <a href="{{ id }}" class="card_link">
+                        <div class="col-md-12" style="height: 236px; margin: 0; padding: 0;">
+                            <input type="file" name="img" id="img" class="img" onchange="upload_img(this)" multiple=false>
+                            <label class="card__img--hover" for="img" id="img_label" style="background-image: url(/static/campaigns/img/folder.png);">
+                        </div>
+                    </a>
+                {% endif %}
 
-            <label for="campaign_description">Description:</label>
-            <textarea type="text" name="campaign_description" id="campaign_description" value=""></textarea>
+                <div class="card__info col-md-12" {% if not img_displayed %}style="border-top-right-radius: 12px; border-top-left-radius: 12px;"{% endif %}>
+                    <span class="card__category checkbox_label">{{ checked_label }}</span>
+                    <label class="toggle-control">
+                        <input type="checkbox" checked="checked" id="checkbox">
+                        <span class="control"></span>
+                        <div id="hidden_checked">{{ checked_label }}</div>
+                        <div id="hidden_unchecked">{{ unchecked_label }}</div>
+                    </label>
+                </div>
 
-            <span class="card__by">by <a class="card__author" title="author">{{ request.user.username }}</a></span>
-            <input type="hidden" id="campaign_author" value="{{ request.user.username }}">
+                {% if title_label %}
+                    <div class="col-md-12">
+                        <label for="title">{{ title_label }}:</label>
+                        <input type="text" name="title" id="title" value="">
+                    </div>
+                    <div class="spacing" style="width: 100%; height: 20px;"></div>
+                {% endif %}
 
-            <button id="create_campaign" class="rect_green btn-green" type="button">Create Campaign</button>
-        </div>
-    </form>
+                <div class="col-md-12">
+                    <label for="description">Description:</label>
+                    <textarea type="text" name="description" id="description" value=""></textarea>
+                </div>
+
+            {% elif form_type == 'double_column' %}
+                <div class="col-md-6" style="margin: 0; padding: 0; float: left;">
+                    {% if img_displayed %}
+                        <a href="{{ id }}" class="card_link">
+                            <div style="height: 236px;">
+                                <input type="file" name="img" id="img" class="img" onchange="upload_img(this)" multiple=false>
+                                <label class="card__img--hover" for="img" id="img_label" style="background-image: url(/static/campaigns/img/folder.png); border-top-right-radius: 0;">
+                            </div>
+                        </a>
+                    {% endif %}
+                    <div class="todo-container">
+                        <div class="todo">
+                            <div class="top_bar">
+                                <input placeholder="search/add" id="search_input" onkeyup="searchUl('id_tags')"></input><button id="search_input_btn" type="button">add</button>
+                            </div>
+                            <div class="list">
+                                <ul id="tags_ul">
+                                    {% for tag in tags %}
+                                        <li id="tag{{ tag.id }}">
+                                            <div class="item">
+                                                <span class="checked">&#10004;</span> {{ tag.tag }}
+                                            </div>
+                                            <button class="delete">X</button>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6" style="float: left;">
+                    <div class="spacing" style="width: 100%; height: 20px;"></div>
+
+                    <label for="title">{{ title_label }}:</label>
+                    <input type="text" name="title" id="title" value="">
+
+                    <div class="spacing" style="width: 100%; height: 20px;"></div>
+
+                    <label for="description">Description:</label>
+                    <textarea type="text" name="description" id="description" value="" style="height: 360px;"></textarea>
+                </div>
+            {% endif %}
+
+            <div class="col-md-12 bubble-form-footer">
+                {% if author_displayed %}
+                    <span class="card__by label-author">by <a class="card__author" title="author">{{ request.user.username }}</a></span>
+                {% endif %}
+
+                {% if parent_id %}
+                    <input type="hidden" id="parent" value={{ parent_id }}>
+                {% endif %}
+                {% if card_id %}
+                    <input type="hidden" id="cardid" value="{{ card_id }}">
+                {% endif %}
+                <input type="hidden" id="author" value="{{ request.user.username }}">
+                <button id="submit" class="rect_green btn-green btn-submit" type="button">{{ button_label }}</button>
+            </div>
+        </form>
+    </div>  
 </div>

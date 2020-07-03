@@ -17,7 +17,6 @@ def user_register(request):
             return HttpResponse(json.dumps("duplicate username"), content_type="application/json")
         if(not (username != "" and password != "")):
             return HttpResponse(json.dumps("username or pass field empty"), content_type="application/json")
-        print(password, check_pass)
         if(password != check_pass):
             return HttpResponse(json.dumps("passwords don't match"), content_type="application/json")
 
@@ -50,6 +49,7 @@ def new_campaign(request):
             c.owner = request.user
             c.title = request.POST.get("title")
             c.description = request.POST.get("description")
+            c.private = request.POST.get("private")
             if(request.POST.get("hasImg") == "true"):
                 c.img = request.FILES['img']
             c.save()
@@ -111,7 +111,6 @@ def edit_card(request):
     else:
         return Http404
 
-
 def delete_card(request):
     if request.is_ajax():
         if(request.POST.get("author") == request.user.username):
@@ -120,6 +119,22 @@ def delete_card(request):
             Campaign.objects.get(id=request.POST.filter("id")).delete()
 
             return HttpResponse(json.dumps("deleted"), content_type="application/json")
+        else:
+            return HttpResponse(json.dumps("invalid credentials"), content_type="application/json")
+    else:
+        return Http404
+
+def new_identifier(request):
+    if request.is_ajax():
+        c = Campaign.objects.get(pk=request.POST.get("parent"))
+        if(request.POST.get("author") == request.user.username and c.owner.username == request.user.username):
+            card = Card.objects.get(pk=request.POST.get("cardid"))
+            note = Note()
+            note.note = request.POST.get("identifier")
+            note.private = request.POST.get("private")
+            note.save()
+            card.identifiers.add(note)
+            return HttpResponse(json.dumps("saved"), content_type="application/json")
         else:
             return HttpResponse(json.dumps("invalid credentials"), content_type="application/json")
     else:
@@ -139,7 +154,7 @@ def new_tag(request):
             except:
                 pass
             c.tags.add(tag)
-            return HttpResponse(json.dumps(str(tag.id)), content_type="application/json")
+            return HttpResponse(json.dumps(str(tag.id) + ":" + tag.tag), content_type="application/json")
         else:
             return HttpResponse(json.dumps("invalid credentials"), content_type="application/json")
     else:

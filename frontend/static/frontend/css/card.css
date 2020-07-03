@@ -1,9 +1,10 @@
 /* Credit: https://codepen.io/veronicadev/pen/WJyOwG */
 
-.cards {
+.card--1 {
   width: 100%;
   justify-content: center;
   -webkit-justify-content: center;
+  border-radius: 12px !important;
 }
 
 .card__delete {
@@ -11,7 +12,7 @@
   font-size: 25px;
   width: 15px;
   vertical-align: middle;
-  float: right;
+  float: right; 
   position: relative;
   margin-top: -10px;
   padding-top: 0;
@@ -44,7 +45,6 @@
 .card__info-hover {
   position: absolute;
   padding: 16px;
-  width: 100%;
   opacity: 0;
   top: 0;
 }

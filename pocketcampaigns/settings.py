@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'adventurer',
     'api',
     'campaigns',
+    'frontend',
     'home',
     'social_django',
     'django.contrib.admin',

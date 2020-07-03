@@ -6,7 +6,7 @@
   background-color: #f44336 !important;
 }
 
-.bottom-nav button {
+#bottom_right_nav button {
   border: none;
   background-color: #0a2239;
   color: #fff;
@@ -19,114 +19,114 @@
   right: 40px;
 }
 
-#btn-01 {
-  -webkit-animation-name: btn-01-reverse-animation;
+#btn-1 {
+  -webkit-animation-name: btn-1-reverse-animation;
   -webkit-animation-duration: .5s;
-  animation-name: btn-01-reverse-animation;
+  animation-name: btn-1-reverse-animation;
   animation-duration: .5s;
   transform: translate(0, 0);
 }
 
-#btn-02 {
-  -webkit-animation-name: btn-02-reverse-animation;
+#btn-2 {
+  -webkit-animation-name: btn-2-reverse-animation;
   -webkit-animation-duration: .5s;
-  animation-name: btn-02-reverse-animation;
+  animation-name: btn-2-reverse-animation;
   animation-duration: .5s;
   transform: translate(0, 0);
 }
 
-#btn-03 {
-  -webkit-animation-name: btn-03-reverse-animation;
+#btn-3 {
+  -webkit-animation-name: btn-3-reverse-animation;
   -webkit-animation-duration: .5s;
-  animation-name: btn-03-reverse-animation;
+  animation-name: btn-3-reverse-animation;
   animation-duration: .5s;
   transform: translate(0, 0);
 }
 
-.open #btn-01 {
-  -webkit-animation-name: btn-01-animation;
+.open #btn-1 {
+  -webkit-animation-name: btn-1-animation;
   -webkit-animation-duration: .5s;
-  animation-name: btn-01-animation;
+  animation-name: btn-1-animation;
   animation-duration: .5s;
   transform: translate(0, -70px);
 }
 
-.open #btn-02 {
-  -webkit-animation-name: btn-02-animation;
+.open #btn-2 {
+  -webkit-animation-name: btn-2-animation;
   -webkit-animation-duration: .5s;
-  animation-name: btn-02-animation;
+  animation-name: btn-2-animation;
   animation-duration: .5s;
   transform: translate(0, -140px);
 }
 
-.open #btn-03 {
-  -webkit-animation-name: btn-03-animation;
+.open #btn-3 {
+  -webkit-animation-name: btn-3-animation;
   -webkit-animation-duration: .5s;
-  animation-name: btn-03-animation;
+  animation-name: btn-3-animation;
   animation-duration: .5s;
   transform: translate(0, -210px);
 }
 
-@-webkit-keyframes btn-01-animation {
+@-webkit-keyframes btn-1-animation {
   from {transform: translate(0, 0);}
   to {transform: translate(0, -70px);}
 }
 
-@keyframes btn-01-animation {
+@keyframes btn-1-animation {
   from {transform: translate(0, 0);}
   to {transform: translate(0, -70px);}
 }
 
-@-webkit-keyframes btn-02-animation {
+@-webkit-keyframes btn-2-animation {
   from {transform: translate(0, 0);}
   to {transform: translate(0, -140px);}
 }
 
-@keyframes btn-02-animation {
+@keyframes btn-2-animation {
   from {transform: translate(0, 0);}
   to {transform: translate(0, -140px);}
 }
 
-@-webkit-keyframes btn-03-animation {
+@-webkit-keyframes btn-3-animation {
   from {transform: translate(0, 0);}
   to {transform: translate(0, -210px);}
 }
 
-@keyframes btn-03-animation {
+@keyframes btn-3-animation {
   from {transform: translate(0, 0);}
   to {transform: translate(0, -210px);}
 }
 
-@-webkit-keyframes btn-01-reverse-animation {
+@-webkit-keyframes btn-1-reverse-animation {
   from {transform: translate(0, -70px);}
   to {transform: translate(0, 0);}
 }
 
-@keyframes btn-01-reverse-animation {
+@keyframes btn-1-reverse-animation {
   from {transform: translate(0, -70px);}
   to {transform: translate(0, 0);}
 }
 
-@-webkit-keyframes btn-02-reverse-animation {
+@-webkit-keyframes btn-2-reverse-animation {
   from {transform: translate(0, -140px);}
   to {transform: translate(0, 0);}
 }
 
-@keyframes btn-02-reverse-animation {
+@keyframes btn-2-reverse-animation {
   from {transform: translate(0, -140px);}
   to {transform: translate(0, 0);}
 }
 
-@-webkit-keyframes btn-03-reverse-animation {
+@-webkit-keyframes btn-3-reverse-animation {
   from {transform: translate(0, -210px);}
   to {transform: translate(0, 0);}
 }
 
-@keyframes btn-03-reverse-animation {
+@keyframes btn-3-reverse-animation {
   from {transform: translate(0, -210px);}
   to {transform: translate(0, 0);}
 }
 
-.bottom-nav button i {
+#bottom_right_nav button i {
   font-size: 1.5em;
 }

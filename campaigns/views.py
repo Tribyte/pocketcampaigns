@@ -11,7 +11,6 @@ def campaigns(request):
 
 def campaign(request, campaign_id):
     context = {}
-    context['campaign_id'] = campaign_id
     context['campaign'] = Campaign.objects.get(pk=campaign_id)
     return render(request, 'campaigns/campaign.html', context)
 

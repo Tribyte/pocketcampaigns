@@ -265,12 +265,12 @@ form {
   opacity: .8;
 }
 
-.fb {
-   background-color: #3B5998 !important;
-   color: #fff !important;
+.reddit {
+  background-color: #FF4300 !important;
+  color: #fff !important;
 }
 
-.fb:hover {
+.reddit:hover {
   opacity: .8;
 }
 

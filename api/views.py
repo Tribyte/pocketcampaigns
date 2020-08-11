@@ -40,59 +40,6 @@ def user_login(request):
     else:
         return Http404
 
-#Card
-def new_card(request):
-    if request.is_ajax():
-        c = Campaign.objects.get(pk=request.POST.get("parent"))
-        if(request.POST.get("author") == request.user.username and c.owner.username == request.user.username):
-            card = Card()
-            card.name = request.POST.get("title")
-            card.description = request.POST.get("description")
-            if(request.POST.get("hasImg") == "true"):
-                card.img = request.FILES['img']
-            card.save()
-            c.cards.add(card)
-            return HttpResponse(json.dumps(str(c.id)), content_type="application/json")
-        else:
-            return HttpResponse(json.dumps("invalid credentials"), content_type="application/json")
-    else:
-        return Http404
-
-def edit_card(request):
-    if request.is_ajax():
-        if(request.POST.get("author") == request.user.username):
-            print("//Todo: fix me")
-    else:
-        return Http404
-
-def delete_card(request):
-    if request.is_ajax():
-        if(request.POST.get("author") == request.user.username):
-
-            Campaign.objects.get(id=request.POST.get("id")).img.delete()
-            Campaign.objects.get(id=request.POST.filter("id")).delete()
-
-            return HttpResponse(json.dumps("deleted"), content_type="application/json")
-        else:
-            return HttpResponse(json.dumps("invalid credentials"), content_type="application/json")
-    else:
-        return Http404
-
-def new_identifier(request):
-    if request.is_ajax():
-        c = Campaign.objects.get(pk=request.POST.get("parent"))
-        if(request.POST.get("author") == request.user.username and c.owner.username == request.user.username):
-            card = Card.objects.get(pk=request.POST.get("cardid"))
-            note = Note()
-            note.note = request.POST.get("identifier")
-            note.private = request.POST.get("private")
-            note.save()
-            card.identifiers.add(note)
-            return HttpResponse(json.dumps("saved"), content_type="application/json")
-        else:
-            return HttpResponse(json.dumps("invalid credentials"), content_type="application/json")
-    else:
-        return Http404
 
 #Tag
 def new_tag(request):

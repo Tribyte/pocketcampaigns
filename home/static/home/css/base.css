@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Kodchasan&display=swap');
 
+:root {
+  --main-bg-color: #fff;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -287,6 +291,8 @@ a {
 
 footer {
   text-align: center;
+  position: relative;
+  z-index: 10;
 }
 
 footer p {

@@ -6,13 +6,7 @@
 {% endblock %}
 
 {% block content %}
-  <div id="campaigns">
-    <div class="row" style="width: 100%">
-      <div class="page-title">
-        <h1>{{ adventurer.username }}</h1>
-      </div>
-    </div>
-  </div>
+  {% include 'frontend/page_titles.html' with title=request.user.username %}
   <div class="row" style="width: calc(100% - 75px); margin: 10px;">
     <div class="col-md-3">
       <div class="card-simple card--1">

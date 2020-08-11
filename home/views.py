@@ -6,19 +6,12 @@ def page_not_found(request, exception):
     context = {}
     return render(request, 'home/404.html', context)
 
-def landing(request):
+def home(request):
+    if(request.user.is_authenticated):
+        return HttpResponseRedirect('adventurer/' + request.user.username)
     context = {}
-    return render(request, 'home/landing.html', context)
-
-def login(request):
-    context = {}
-    return render(request, 'home/login.html', context)
+    return render(request, 'home/home.html', context)
 
 def logout(request):
     django_logout(request)
     return HttpResponseRedirect('/')
-
-# if(request.user.is_authenticated):
-#     context = {}
-#     return HttpResponseRedirect('adventurer/' + request.user.username)
-# else:

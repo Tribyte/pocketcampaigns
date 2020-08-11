@@ -1,0 +1,30 @@
+body {
+    background-size: cover;
+}
+
+.particle_overlay {
+    height: calc(100vh - 66px);
+    overflow: hidden;
+}
+
+.navbar-brand svg {
+    height: 40px;
+    fill: #fff;
+}
+
+.nav-item {
+    cursor: pointer;
+    transition: ease-in-out .25s;
+}
+
+.nav-item:hover {
+    opacity: .5;
+}
+
+.navbar-brand {
+    cursor: pointer;
+}
+
+.navbar-toggler {
+    cursor: pointer;
+}

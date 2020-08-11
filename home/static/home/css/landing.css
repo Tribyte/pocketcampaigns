@@ -1,17 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 
-body {
-    background-size: cover;
+.main_logo {
+    width: 100%;
 }
 
-.particle_overlay {
-    height: calc(100vh - 66px);
-    overflow: hidden;
+.main_title {
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    margin-top: 2vh;
 }
 
-#logo {
-    height: 40px;
-    filter: invert(100%);
+.main_title h1 {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bolder;
+    font-size: 2.5em;
+}
+
+.main_logo svg {
+    height: 18em;
+    fill: #fff;
 }
 
 .navbar {
@@ -75,3 +83,27 @@ body {
     margin-top: 5%;
 }
 
+#landing_to_login {
+    color: #fff;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    transition: ease-in-out .25s;
+    width: auto;
+}
+
+#landing_to_login:hover {
+    opacity: .7;
+}
+
+#landing_to_register {
+    color: #fff;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    transition: ease-in-out .25s;
+}
+
+#landing_to_register:hover {
+    opacity: .7;
+}

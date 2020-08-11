@@ -1,83 +1,36 @@
-from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
-from campaigns.models import Campaign, Card, Tag, Note
 from rest_framework.response import Response
-import json
+from rest_framework.decorators import api_view
+from rest_framework.decorators import parser_classes
+from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
+from rest_framework.authtoken.models import Token
 
-#@csrf_exemp -> REMEMBER
+@api_view(['POST'])
+@parser_classes([MultiPartParser, FormParser, JSONParser])
 def user_register(request):
-    if request.is_ajax():
-        username = request.POST.get("username")
-        password = request.POST.get("password")
-        check_pass = request.POST.get("check_pass")
+    username = request.data["username"]
+    password = request.data["password"]
+    check_pass = request.data["check_pass"]
 
-        if(User.objects.all().filter(username=username).exists()):
-            return HttpResponse(json.dumps("duplicate username"), content_type="application/json")
-        if(not (username != "" and password != "")):
-            return HttpResponse(json.dumps("username or pass field empty"), content_type="application/json")
-        if(password != check_pass):
-            return HttpResponse(json.dumps("passwords don't match"), content_type="application/json")
+    if(User.objects.all().filter(username=username).exists()): return Response({'data': 'duplicate username'})
+    if(username == "" or password == ""): return Response({'data': 'username or pass field empty'})
+    if(password != check_pass): return Response({'data': 'passwords don\'t match'})
 
-        user = User.objects.create_user(username, "", password)
-        auth_user = authenticate(username=username, password=password)
-        login(request, auth_user)
+    user = User.objects.create_user(username, "", password)
+    auth_user = authenticate(username=username, password=password)
+    Token.objects.create(user=user)
+    login(request, auth_user)
 
-        return HttpResponse(json.dumps("logged in"), content_type="application/json")
-    else:
-        return Http404
+    return Response({'data': 'success'})
 
 
+@api_view(['POST'])
+@parser_classes([MultiPartParser, FormParser, JSONParser])
 def user_login(request):
-    if request.is_ajax():
-        user = authenticate(username=request.POST.get("username"), password=request.POST.get("password"))
-        if user is not None:
-            login(request, user)
-            return HttpResponse(json.dumps("logged in"), content_type="application/json")
-        else:
-            return HttpResponse(json.dumps("invalid credentials"), content_type="application/json")
+    user = authenticate(username=request.data["username"], password=request.data["password"])
+    if user is not None:
+        login(request, user)
+        return Response({'data': 'success'})
     else:
-        return Http404
-
-
-#Tag
-def new_tag(request):
-    if request.is_ajax():
-        c = Campaign.objects.get(pk=request.POST.get("parent"))
-        if(request.POST.get("author") == request.user.username and c.owner.username == request.user.username):
-            tag = Tag()
-            tag.tag = request.POST.get("tag")
-            tag.save()
-            try:
-                card = Card.objects.get(pk=request.POST.get("cardid"))
-                card.tags.add(tag)
-            except:
-                pass
-            c.tags.add(tag)
-            return HttpResponse(json.dumps(str(tag.id) + ":" + tag.tag), content_type="application/json")
-        else:
-            return HttpResponse(json.dumps("invalid credentials"), content_type="application/json")
-    else:
-        return Http404
-
-def edit_tag(request):
-    if request.is_ajax():
-        if(request.POST.get("author") == request.user.username):
-            print("//Todo: fix me")
-    else:
-        return Http404
-
-
-def delete_tag(request):
-    if request.is_ajax():
-        if(request.POST.get("author") == request.user.username):
-
-            Campaign.objects.get(id=request.POST.get("id")).img.delete()
-            Campaign.objects.get(id=request.POST.filter("id")).delete()
-
-            return HttpResponse(json.dumps("deleted"), content_type="application/json")
-        else:
-            return HttpResponse(json.dumps("invalid credentials"), content_type="application/json")
-    else:
-        return Http404
+        return Response({'data': 'Error: Invalid Credentials'})

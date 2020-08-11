@@ -3,7 +3,7 @@ function sendXHR(url, sendType, formData, callback) {
 
     request.onreadystatechange = function () {
         if (request.readyState === 4) {
-            callback(request.response);
+            callback(JSON.parse(request.response));
         }
     }
 

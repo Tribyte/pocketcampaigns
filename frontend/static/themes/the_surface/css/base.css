@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+
+:root {
+  --main-font-family: 'Quicksand', sans-serif;
+  --main-light-color: #fff;
+  --main-dark-color: #000;
+}
+
+body {
+    font-family: var(--main-font-family);
+}
+
+.footer-fix {
+    float: left;
+    width: 100%;
+}
+
+.row {
+    margin: 0!important;
+    width: 100%;
+}

@@ -1,3 +1,6 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'frontend/css/card.css' %}">
+
 {% if card_type == 'full' %}
     <div class="col-md-{{ width }}">
         <div class="card card--1">

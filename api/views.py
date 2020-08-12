@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from adventurer.models import Adventurer
 from django.contrib.auth import authenticate, login
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
@@ -20,6 +21,9 @@ def user_register(request):
     user = User.objects.create_user(username, "", password)
     auth_user = authenticate(username=username, password=password)
     Token.objects.create(user=user)
+    adventurer = Adventurer()
+    adventurer.pk = user.pk
+    adventurer.save()
     login(request, auth_user)
 
     return Response({'data': 'success'})
@@ -30,6 +34,7 @@ def user_register(request):
 def user_login(request):
     user = authenticate(username=request.data["username"], password=request.data["password"])
     if user is not None:
+        Adventurer.objects.get_or_create(pk=user.pk)
         login(request, user)
         return Response({'data': 'success'})
     else:

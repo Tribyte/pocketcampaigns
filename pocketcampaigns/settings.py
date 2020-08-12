@@ -101,6 +101,7 @@ REST_FRAMEWORK = {
     ]
 }
 
+TEMPLATES[0]['OPTIONS']['context_processors'].append("adventurer.context_processors.adventurer_processor")
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases

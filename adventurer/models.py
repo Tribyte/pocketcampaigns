@@ -1,12 +1,21 @@
 from django.conf import settings
 from django.db import models
+from django.contrib.auth.models import User
 
 def get_sentinel_user():
     return get_user_model().objects.get_or_create(username='deleted')[0]
 
 class Adventurer(models.Model):
-    theme = models.CharField(max_length=256, default="themes/the_surface/")
-    nav_style = models.CharField(max_length=256, default="navigation/sidebar/old/")
+    THEME_CHOICES = (
+        ('the_surface', 'The Surface'),
+    )
+    theme = models.CharField(max_length=256, choices=THEME_CHOICES, default="The Surface")
+    NAV_CHOICES = (
+        ('sidebar_basic', 'Basic Sidebar'),
+    )
+    nav_style = models.CharField(max_length=256, choices=NAV_CHOICES, default="Sidebar Old")
+    def __str__(self):
+        return User.objects.get(pk=self.pk).username
 
 class Party(models.Model):
     private = models.BooleanField(blank=True, null=True)

@@ -1,0 +1,140 @@
+h1 {
+    color: #fff;
+}
+
+.options-nav {
+    overflow-y: hidden;
+    position: fixed;
+    float: left;
+    width: 0;
+    height: 100vh;
+    background-color: var(--main-nav-color);
+    opacity: .7;
+    overflow: hidden;
+    transition: ease-in-out .75s;
+    z-index: 10;
+}
+
+.options-nav.active {
+    width: 20vw;
+}
+
+.head {
+    width: 20vw;
+    float: left;
+    text-align: center;
+}
+
+.head h1 {
+    font-size: 1.75em;
+    float: right;
+    width: 100%;
+    padding: 10px;
+}
+
+.search {
+    width: 20vw;
+    padding: 20px;
+}
+
+.search .in {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-color: transparent;
+    border-top: 2px solid #fff;
+    border-left: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    border-right: 0;
+    width: calc(100% - 50px);
+    height: 40px;
+    float: left;
+    color: #fff;
+    font-family: var(--main-font-family);
+    font-size: 1.5em;
+}
+
+.search .btn {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width: 50px;
+    height: 40px;
+    border: 2px solid #fff;
+    padding: 0;
+    background: transparent;
+    transition: ease-in .5s;
+}
+
+.search .btn:hover {
+    background: #fff;
+}
+
+.search .btn svg {
+    height: 30px;
+    transition: ease-in .25s;
+}
+
+.search .btn:hover svg {
+    stroke: #000;
+}
+
+.search .elements {
+    color: #fff;
+}
+
+.search .elements .element {
+    border-radius: 10px;
+    height: 40px;
+    width: 100%;
+    padding: 5px;
+    margin-top: 10px;
+    border: 2px solid #fff;
+}
+
+.search .elements .element h2 {
+    font-size: 1.5em;
+    width: 90%;
+    height: 100%;
+    float: left;
+    text-align: left;
+    color: #fff;
+}
+
+.search .elements .element h2:hover {
+    color: #fff;
+}
+
+.search .elements .element span {
+    width: 10%;
+    height: 100%;
+    float: left;
+}
+
+.search .elements .element span svg {
+    height: 100%;
+}
+
+.new-campaign {
+    cursor: pointer;
+    transition: ease-in .25s;
+}
+
+.new-campaign h2 {
+    transition: ease-in .25s;
+}
+
+.new-campaign svg {
+    transition: ease-in .25s;
+}
+
+.new-campaign.active {
+    background-color: #fff;
+}
+
+.new-campaign.active h2 {
+    color: #000 !important;
+}
+
+.new-campaign.active svg {
+    transform: rotate(45deg);
+    stroke: #000;
+}

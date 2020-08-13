@@ -4,8 +4,14 @@
     z-index: 10;
     width: 50px;
     height: 100vh;
-    background-color: #040d16;
+    background-color: var(--main-nav-color);
     overflow-y: hidden;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.basic-sidebar::-webkit-scrollbar {
+  display: none;
 }
 
 .page-content {
@@ -30,4 +36,8 @@
 
 .basic-sidebar .bottom svg {
     margin-top: 20px;
+}
+
+.basic-sidebar .bottom svg:last-child {
+    margin-bottom: 10px;
 }

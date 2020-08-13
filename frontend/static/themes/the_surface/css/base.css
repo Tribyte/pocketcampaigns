@@ -3,10 +3,10 @@
 :root {
   --main-font-family: 'Quicksand', sans-serif;
   --main-light-color: #fff;
-  --main-dark-color: #000;
+  --main-nav-color: #040d16;
 }
 
-body {
+h1, h2, h3, h4, h5 {
     font-family: var(--main-font-family);
 }
 
@@ -18,4 +18,10 @@ body {
 .row {
     margin: 0!important;
     width: 100%;
+}
+
+.footer-fix {
+    height: 100vh;
+    position: relative;
+    z-index: 5;
 }

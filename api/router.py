@@ -1,6 +1,6 @@
 from adventurer.api.viewsets import PartyViewSet
 from campaigns.api.viewsets import CampaignViewSet, CardViewSet, NoteViewSet, TagViewSet
-from home.api.viewsets import AuthViewSet
+from landing.api.viewsets import AuthViewSet
 from rest_framework import routers
 
 router = routers.DefaultRouter()

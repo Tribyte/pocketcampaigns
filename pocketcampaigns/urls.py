@@ -7,17 +7,16 @@ from django.conf.urls import handler400, handler403, handler404, handler500
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
-handler404 = 'home.views.page_not_found'
+handler404 = 'landing.views.page_not_found'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^oauth/', include('social_django.urls', namespace='social')),
     url(r'^api/', include('api.urls')),
-    url(r'^campaigns/', include('campaigns.urls')),
-    url(r'^adventurer/', include('adventurer.urls')),
 
     #default
-    path('', include('home.urls')),
+    path('', include('landing.urls')),
+    path('', include("dashboard.urls")),
 ]
 
 if settings.DEBUG:

@@ -1,0 +1,48 @@
+<div id="landing_template">
+    <div style="height: 3vh"></div>
+    <div class="container">
+        <div class="row">
+            <div class="main_logo">
+                {% include "landing/svgs/SVG-Campaigns.svg" %}
+            </div>
+            <div class="main_title">
+                <h1>Pocket Campaigns</h1>
+            </div>
+        </div>
+    </div>
+    <div style="height: 3vh"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="landing_card">
+                    <h3 class="landing_card_title">Create</h3>
+                    {% include "landing/svgs/create-icon.svg" %}
+                    <p>Pocket Campaign is a simple GM's tool to convert your ideas into easy-to-manage decks and cards. A card may represent a character, location, plot hook or really anything else you can think of. Give your card a name, add notes and identifiers to describe it.</P>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="landing_card">
+                    <h3 class="landing_card_title">Organize</h3>
+                    {% include "landing/svgs/organize-icon.svg" %}
+                    <p>Cards are sorted under Campaign Decks. Each deck has it's own custom set of tags that you define. Tag each card entry with all that apply, and search by them. Cards automatically link to each other if they find another card's name in their notes or descriptions, creating a smooth flow or even adventure track.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="landing_card">
+                    <h3 class="landing_card_title">Play</h3>
+                    {% include "landing/svgs/sick-play-icon.svg" %}
+                    <p>Decks and cards can both be shared and imported by other users. These exports can be password-locked, and even set to delete their secret notes when imported without the correct password. GMs can keep their players up to date on all the features of their world without giving anything away.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="height: 3vh"></div>
+    <div class="container">
+        <div class="row">
+            <div class="main_title">
+                <button id="landing_to_register"><h1>Get Started &#62;</h1></button>
+                <h2><button id="landing_to_login"><u>or Log In</u></button></h2>
+            </div>
+        </div>
+    </div>
+</div>

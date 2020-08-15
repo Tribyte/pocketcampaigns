@@ -1,0 +1,179 @@
+/* line 10, dashboard/static/navigation/sidebar/basic/css/sidebar.scss */
+.options-nav {
+  position: fixed;
+  float: left;
+  width: 0;
+  margin-left: 50px;
+  height: 100vh;
+  background: radial-gradient(rgba(4, 13, 22, 0.8), rgba(4, 13, 22, 0.5));
+  overflow-x: hidden;
+  overflow-y: scroll;
+  transition: ease-in-out 0.5s;
+  background-repeat: no-repeat;
+  background-size: 100vh 100vh;
+  z-index: z-index;
+  scrollbar-width: none; }
+  /* line 25, dashboard/static/navigation/sidebar/basic/css/sidebar.scss */
+  .options-nav ::-webkit-scrollbar {
+    display: none; }
+  /* line 29, dashboard/static/navigation/sidebar/basic/css/sidebar.scss */
+  .options-nav .head {
+    width: 20vw;
+    float: left;
+    text-align: center; }
+    /* line 34, dashboard/static/navigation/sidebar/basic/css/sidebar.scss */
+    .options-nav .head h1 {
+      margin: 0;
+      font-size: 1.75em;
+      float: right;
+      width: 100%;
+      padding: 10px;
+      color: #fff; }
+  /* line 44, dashboard/static/navigation/sidebar/basic/css/sidebar.scss */
+  .options-nav .search {
+    width: calc($width - 40px);
+    padding: 20px; }
+    /* line 48, dashboard/static/navigation/sidebar/basic/css/sidebar.scss */
+    .options-nav .search .in {
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+      background-color: transparent;
+      border-top: 2px solid #fff;
+      border-left: 2px solid #fff;
+      border-bottom: 2px solid #fff;
+      margin-left: -2px;
+      border-right: 0;
+      width: calc(100% - 50px);
+      height: 40px;
+      float: left;
+      color: #fff;
+      font-family: var(--main-font-family);
+      font-size: 1.5em; }
+    /* line 65, dashboard/static/navigation/sidebar/basic/css/sidebar.scss */
+    .options-nav .search .btn {
+      border-radius: 10px 10px 6px 6px;
+      width: 50px;
+      height: 40px;
+      border: 2px solid #fff;
+      margin-right: -2px;
+      padding: 0;
+      background: transparent;
+      transition: ease-in .5s; }
+      /* line 75, dashboard/static/navigation/sidebar/basic/css/sidebar.scss */
+      .options-nav .search .btn svg {
+        height: 30px;
+        transition: ease-in .25s; }
+      /* line 80, dashboard/static/navigation/sidebar/basic/css/sidebar.scss */
+      .options-nav .search .btn :hover {
+        background: #fff; }
+        /* line 83, dashboard/static/navigation/sidebar/basic/css/sidebar.scss */
+        .options-nav .search .btn :hover svg {
+          stroke: #000; }
+      /* line 88, dashboard/static/navigation/sidebar/basic/css/sidebar.scss */
+      .options-nav .search .btn .elements {
+        color: #fff; }
+        /* line 91, dashboard/static/navigation/sidebar/basic/css/sidebar.scss */
+        .options-nav .search .btn .elements .element {
+          border-radius: 10px;
+          height: 40px;
+          width: 100%;
+          padding: 5px;
+          margin-top: 10px;
+          border: 2px solid #fff;
+          cursor: pointer; }
+          /* line 100, dashboard/static/navigation/sidebar/basic/css/sidebar.scss */
+          .options-nav .search .btn .elements .element h2 {
+            font-size: 1.5em;
+            width: 80%;
+            height: 100%;
+            float: left;
+            text-align: left;
+            color: #fff; }
+            /* line 108, dashboard/static/navigation/sidebar/basic/css/sidebar.scss */
+            .options-nav .search .btn .elements .element h2 :hover {
+              color: #fff; }
+          /* line 113, dashboard/static/navigation/sidebar/basic/css/sidebar.scss */
+          .options-nav .search .btn .elements .element span span {
+            width: 0%;
+            height: 100%;
+            float: right;
+            transition: ease-in .5s;
+            overflow-x: hidden; }
+            /* line 120, dashboard/static/navigation/sidebar/basic/css/sidebar.scss */
+            .options-nav .search .btn .elements .element span span svg {
+              height: 100%;
+              transition: ease-in .5s;
+              margin-left: -15px; }
+              /* line 125, dashboard/static/navigation/sidebar/basic/css/sidebar.scss */
+              .options-nav .search .btn .elements .element span span svg :last-child {
+                margin-right: -10px; }
+        /* line 133, dashboard/static/navigation/sidebar/basic/css/sidebar.scss */
+        .options-nav .search .btn .elements .element.active span span {
+          width: 8%; }
+        /* line 139, dashboard/static/navigation/sidebar/basic/css/sidebar.scss */
+        .options-nav .search .btn .elements .dropdown .sub-element {
+          padding: 0;
+          height: 0;
+          width: 95%;
+          margin-left: 5%;
+          margin-top: 0;
+          border-radius: 10px;
+          color: #fff;
+          background: transparent;
+          overflow-y: hidden;
+          transition: ease-in .5s;
+          text-align: left; }
+          /* line 152, dashboard/static/navigation/sidebar/basic/css/sidebar.scss */
+          .options-nav .search .btn .elements .dropdown .sub-element .card {
+            height: 40px;
+            width: 100%;
+            background: transparent; }
+            /* line 157, dashboard/static/navigation/sidebar/basic/css/sidebar.scss */
+            .options-nav .search .btn .elements .dropdown .sub-element .card h2 {
+              font-size: 1.7em;
+              float: left;
+              width: 90%; }
+            /* line 163, dashboard/static/navigation/sidebar/basic/css/sidebar.scss */
+            .options-nav .search .btn .elements .dropdown .sub-element .card span {
+              height: 100%;
+              float: left;
+              width: 10%; }
+              /* line 168, dashboard/static/navigation/sidebar/basic/css/sidebar.scss */
+              .options-nav .search .btn .elements .dropdown .sub-element .card span svg {
+                height: 100%; }
+        /* line 177, dashboard/static/navigation/sidebar/basic/css/sidebar.scss */
+        .options-nav .search .btn .elements .dropdown.active .sub-element {
+          height: 40px;
+          margin-top: 10px;
+          padding: 3px;
+          border: 2px solid #fff; }
+  /* line 188, dashboard/static/navigation/sidebar/basic/css/sidebar.scss */
+  .options-nav .new-campaign {
+    cursor: pointer;
+    transition: ease-in .25s; }
+    /* line 192, dashboard/static/navigation/sidebar/basic/css/sidebar.scss */
+    .options-nav .new-campaign h2 {
+      transition: ease-in .25s; }
+    /* line 196, dashboard/static/navigation/sidebar/basic/css/sidebar.scss */
+    .options-nav .new-campaign svg {
+      transition: ease-in .25s;
+      height: 100%;
+      margin: 0;
+      float: right; }
+    /* line 203, dashboard/static/navigation/sidebar/basic/css/sidebar.scss */
+    .options-nav .new-campaign span {
+      width: 6% !important; }
+  /* line 208, dashboard/static/navigation/sidebar/basic/css/sidebar.scss */
+  .options-nav .new-campaign.active {
+    background-color: #fff; }
+    /* line 211, dashboard/static/navigation/sidebar/basic/css/sidebar.scss */
+    .options-nav .new-campaign.active h2 {
+      color: #000 !important; }
+    /* line 215, dashboard/static/navigation/sidebar/basic/css/sidebar.scss */
+    .options-nav .new-campaign.active svg {
+      transform: rotate(45deg);
+      stroke: #000; }
+
+/* line 222, dashboard/static/navigation/sidebar/basic/css/sidebar.scss */
+.options-nav.active {
+  width: 20vw; }

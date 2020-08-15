@@ -37,8 +37,9 @@ INSTALLED_APPS = [
     'adventurer',
     'api',
     'campaigns',
-    'frontend',
-    'home',
+    'dashboard',
+    'landing',
+    'compressor',
     'social_django',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -164,9 +165,18 @@ SOCIAL_AUTH_REDDIT_SECRET = os.environ['SOCIAL_AUTH_REDDIT_SECRET']
 
 DATA_UPLOAD_MAX_NUMBER_FIELDS = None
 
-
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
+
+COMPRESS_PRECOMPILERS = (
+    ('text/x-scss', 'django_libsass.SassCompiler'),
+)

@@ -8,6 +8,7 @@ def get_sentinel_user():
 class Adventurer(models.Model):
     THEME_CHOICES = (
         ('the_surface', 'The Surface'),
+        ('rain', 'Rain'),
     )
     theme = models.CharField(max_length=256, choices=THEME_CHOICES, default="The Surface")
     NAV_CHOICES = (

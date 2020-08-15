@@ -19,6 +19,16 @@ function bubbles() {
     });
 }
 
+function addBubbles(divClass) {
+    $.each($(divClass), function () {
+        var bubblecount = ($(this).width() / 50) * 10;
+        for (var i = 0; i <= bubblecount; i++) {
+            var size = ($.rnd(40, 80) / 10);
+            $(this).append('<span class="particle" style="top:' + $.rnd(0, 100) + '%; left:' + $.rnd(0, 95) + '%;width:' + size + 'px; height:' + size + 'px;animation-delay: ' + ($.rnd(0, 30) / 10) + 's;"></span>');
+        }
+    });
+}
+
 function hearts() {
     $.each($(".particletext.hearts"), function () {
         var heartcount = ($(this).width() / 50) * 5;

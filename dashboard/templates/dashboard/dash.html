@@ -1,0 +1,80 @@
+{% load compress %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pocket Campaigns</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'dashboard/img/favicon.ico' %}" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <!-- tools styles -->
+    <link rel="stylesheet" type="text/css" href="{% static 'tools/css/snackbar.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'tools/css/particle.css' %}">
+
+    <!-- background styles -->
+    {% if adventurer.theme == "the_surface" %}
+      <link rel="stylesheet" type="text/css" href="{% static 'themes/the_surface/css/background.css' %}">
+    {% elif adventurer.theme == "rain" %}
+      <link rel="stylesheet" type="text/css" href="{% static 'themes/rain/css/background.css' %}">
+    {% endif %}
+
+    <!-- navbar syles -->
+    {% if adventurer.nav_style == "sidebar_basic" %}
+      {% compress css %}
+        <link rel="stylesheet" type="text/css" href="{% static 'navigation/sidebar/basic/css/base.css' %}">
+        <link rel="stylesheet" type="text/x-scss" href="{% static 'navigation/sidebar/basic/css/navbar.scss' %}" />
+        <link rel="stylesheet" type="text/x-scss" href="{% static 'navigation/sidebar/basic/css/sidebar.scss' %}" />
+        <link rel="stylesheet" type="text/x-scss" href="{% static 'navigation/sidebar/basic/css/campaign-form.scss' %}">
+      {% endcompress %}
+    {% endif %}
+  </head>
+
+  <body>
+    <!-- backgrounds -->
+    <section class="background">
+      {% if adventurer.theme == "the_surface" %}
+        {% include 'themes/the_surface/background.html' %}
+      {% elif adventurer.theme == "rain" %}
+        {% include 'themes/rain/background.html' %}
+      {% endif %}
+    </section>
+
+    <!-- navbars -->
+    <nav class="nav">
+      {% if adventurer.nav_style == "sidebar_basic" %}
+        {% include 'navigation/sidebar/basic/navbar.html' %}
+        {% include 'navigation/sidebar/basic/sidebar.html' %}
+        {% include 'navigation/sidebar/basic/campaign-form.html' %}
+      {% endif %}
+    </nav>
+
+    {% comment %} <div class="page-content"> {% endcomment %}
+      {% comment %} <div class="footer-fix">
+      </div> {% endcomment %}
+
+    <footer>
+      <!-- <p>&copy; Pocket Campaigns. All Rights Reserved.</p> -->
+    </footer>
+
+    <div class="snackbar"><h1></h1></div>
+    {% comment %} </div> {% endcomment %}
+
+    <!-- tools scripts -->
+    <script src="{% static 'tools/js/xhrRequest.js' %}" type="text/javascript"></script>
+    <script src="{% static 'tools/js/snackbar.js' %}" type="text/javascript"></script>
+    <script src="{% static 'tools/js/particle.js' %}" type="text/javascript"></script>
+
+    <!-- background scripts -->
+    {% if adventurer.theme == "the_surface" %}
+      <script src="{% static 'themes/the_surface/js/background.js' %}" type="text/javascript"></script>
+    {% elif adventurer.theme == "rain" %}
+      <script src="{% static 'themes/rain/js/background.js' %}" type="text/javascript"></script>
+    {% endif %}
+
+    <!-- navbar scripts -->
+    {% if adventurer.nav_style == "sidebar_basic" %}
+      <script src="{% static 'navigation/sidebar/basic/js/sidebar.js' %}" type="text/javascript"></script>
+      <script src="{% static 'navigation/sidebar/basic/js/campaign-form.js' %}" type="text/javascript"></script>
+    {% endif %}
+  </body>
+</html>

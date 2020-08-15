@@ -1,0 +1,37 @@
+<div id="login_template">
+    <form accept-charset="UTF-8" method="post" class="login_form">
+        {% csrf_token %}
+        <h1>Sign In With</h1>
+        <div style="height: 3vh"></div>
+        <div class="row">
+            <div class="col-md-12">
+                <a href="{% url 'social:begin' 'google-oauth2' %}" class="google btn">
+                    <i class="fab fa-google fa-fw"></i> Login with Google
+                </a>
+                <a href="{% url 'social:begin' 'reddit' %}" class="reddit btn">
+                    <i class="fab fa-reddit"></i> Login with Reddit
+                </a>
+            </div>
+            <div class="col-md-12">
+                <a href="{% url 'social:begin' 'twitter' %}" class="twitter btn">
+                    <i class="fab fa-twitter"></i> Login with Twitter
+                </a>
+                <a href="{% url 'social:begin' 'github' %}" class="github btn">
+                    <i class="fab fa-github-alt"></i> Login with Github
+                </a>
+            </div>
+        </div>
+        <div style="padding-top:20px;">
+            <label for="login_username">Username</label>
+            <input type="text" name="login_username" id="login_username" value="">
+            <label for="login_password">Password <a id="forgot"><u><em>forgot?</em></u></a></label>
+            <input type="password" name="login_password" id="login_password" value="">
+        </div>
+        <div style="width: 100%; padding-top: 20px;"></div>
+        <div class="full-width">
+            <button id="login_btn" name="commit" type="button" value="Log in">Login</button>
+        </div>
+        <div style="width: 100%; padding-top: 20px;"></div>
+        Not a Member? <button id="sign_up" type="button"><u><em>Sign up now</em></u></a>
+    </form>
+</div>

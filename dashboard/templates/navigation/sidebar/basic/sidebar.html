@@ -1,0 +1,20 @@
+<div class="options-nav">
+    <div class="head">
+        <h1>Campaign Decks</h1>
+    </div>
+    <div class="search">
+        <input class="in"></input>
+        <button class="btn">{% include 'icons/search-ico.svg'%}</button>
+        <div class="elements">
+            {% if campaigns %}
+                {% for campaign in campaigns %}
+                    {% include 'navigation/sidebar/basic/template/element.html' with campaign=campaign %}
+                {% endfor %}
+            {% endif %}
+            <div class="element new-campaign">
+                <h2>New Campaign</h2>
+                <span>{% include 'icons/plus-ico.svg'%}</span>
+            </div>
+        </div>
+    </div>
+</div>

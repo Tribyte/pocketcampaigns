@@ -5,6 +5,16 @@ from django.contrib.auth.models import User
 def get_sentinel_user():
     return get_user_model().objects.get_or_create(username='deleted')[0]
 
+class Applet(models.Model):
+    url = models.URLField()
+    x = models.IntegerField()
+    y = models.IntegerField()
+    height = models.IntegerField()
+    width = models.IntegerField()
+
+class Dashboard(models.Model):
+    applets = models.ManyToManyField(Applet, related_name="applets", blank=True)
+
 class Adventurer(models.Model):
     THEME_CHOICES = (
         ('the_surface', 'The Surface'),
@@ -15,6 +25,7 @@ class Adventurer(models.Model):
         ('sidebar_basic', 'Basic Sidebar'),
     )
     nav_style = models.CharField(max_length=256, choices=NAV_CHOICES, default="Sidebar Old")
+    dashboards = models.ManyToManyField(Dashboard, related_name="dashboards", blank=True)
     def __str__(self):
         return User.objects.get(pk=self.pk).username
 

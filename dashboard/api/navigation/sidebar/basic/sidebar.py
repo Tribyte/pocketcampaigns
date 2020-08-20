@@ -12,7 +12,7 @@ def element(request):
     context["campaign"] = Campaign.objects.get(pk=request.data["id"])
 
     if(context["campaign"].owner.pk != request.user.pk): return Response({'error': 'invalid credentials'})
-    return render(request, 'navigation/sidebar/basic/template/element.html', context)
+    return render(request, 'navigation/sidebar/basic/campaigns/template/element.html', context)
 
 
 @api_view(['POST'])
@@ -26,4 +26,4 @@ def sub_element(request):
         "name": request.data["name"],
     }
 
-    return render(request, 'navigation/sidebar/basic/template/sub-element.html', context)
+    return render(request, 'navigation/sidebar/basic/campaigns/template/sub-element.html', context)

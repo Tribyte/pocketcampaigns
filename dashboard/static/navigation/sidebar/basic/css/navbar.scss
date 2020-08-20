@@ -1,7 +1,7 @@
 $text-color: #fff;
 $background-color: #040d16;
 $border-radus: 10px;
-$width: 50px;
+$width: var(--nav-width);
 $height: 100vh;
 $svg-width: 40px;
 $svg-padding: 5px;

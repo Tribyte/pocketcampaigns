@@ -1,4 +1,4 @@
-<div class="options-nav">
+<div class="campaign-nav">
     <div class="head">
         <h1>Campaign Decks</h1>
     </div>
@@ -8,7 +8,7 @@
         <div class="elements">
             {% if campaigns %}
                 {% for campaign in campaigns %}
-                    {% include 'navigation/sidebar/basic/template/element.html' with campaign=campaign %}
+                    {% include 'navigation/sidebar/basic/campaigns/template/element.html' with campaign=campaign %}
                 {% endfor %}
             {% endif %}
             <div class="element new-campaign">
@@ -17,4 +17,5 @@
             </div>
         </div>
     </div>
+    {% include 'navigation/sidebar/basic/campaigns/campaign-form.html' %}
 </div>

@@ -22,7 +22,7 @@ $element-margin-top: 10px;
     z-index: $z-index;
     width: 0;
     background-color: rgba($background-color, .7);
-    margin-left: calc(#{ $width } + #{ $nav-width });
+    margin-left: #{ $width };
     top: 0;
     transition: ease-in $transition-time;
     overflow-y: hidden;

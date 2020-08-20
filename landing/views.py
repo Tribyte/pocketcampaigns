@@ -10,7 +10,7 @@ def page_not_found(request, exception):
 def home(request):
     if(request.user.is_authenticated):
         Adventurer.objects.get_or_create(pk=request.user.pk)
-        return HttpResponseRedirect('dash')
+        return HttpResponseRedirect('/dash')
     context = {}
     return render(request, 'landing/home.html', context)
 

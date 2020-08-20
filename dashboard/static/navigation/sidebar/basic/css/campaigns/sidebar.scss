@@ -3,7 +3,8 @@ $width: 20vw;
 $height: 100vh;
 $font-size: 1.75em;
 $z-index: 10;
-$nav-width: 50px;
+$nav-width: var(--nav-width);
+$nav-padding: 20px;
 //base timing
 $transition-time: .5s;
 //colors
@@ -13,32 +14,37 @@ $background-color: #040d16;
 $border-radus: 10px;
 $border-size: 2px;
 //element
-$element-height: 34px;
 $element-padding-verticle: 1px;
 $element-padding-horizontal: 5px;
+$element-height: 34px;
+$element-width: calc(#{ $width } - #{ ($element-padding-horizontal * 2) + ($border-size * 2) + ($nav-padding * 2) });
 
 :root {
     //used in js
     --sidenav-background-color: 4, 13, 22;
 }
 
-.options-nav {
+.campaign-nav {
     position: fixed;
     float: left;
     width: 0;
     margin-left: $nav-width;
-    height: 100vh;
+    height: $height;
     background: radial-gradient(rgba($background-color, .8), rgba($background-color, .5));
-    overflow-x: hidden;
+    // overflow-x: hidden;
     overflow-y: scroll;
     transition: ease-in-out $transition-time;
     background-repeat: no-repeat;
     background-size: $height $height;
-    z-index: z-index;
+    z-index: $z-index;
     scrollbar-width: none;
 
     ::-webkit-scrollbar {
         display: none;
+    }
+
+    &.active {
+        width: $width;
     }
 
     .head {
@@ -57,8 +63,8 @@ $element-padding-horizontal: 5px;
     }
 
     .search {
-        width: calc(20vw - 40px);
-        padding: 20px;
+        width: calc(#{ $width } - #{ $nav-padding * 2 });
+        padding: $nav-padding;
 
         .in {
             border-top-left-radius: 10px;
@@ -68,7 +74,7 @@ $element-padding-horizontal: 5px;
             border-left: $border-size solid #fff;
             border-bottom: $border-size solid #fff;
             border-right: 0;
-            width: calc(100% - #{$nav-width + $border-size + ($element-padding-horizontal * 2)});
+            width: calc(#{$element-width} - 44px);
             height: $element-height;
             padding: $element-padding-verticle $element-padding-horizontal;
             float: left;
@@ -79,7 +85,7 @@ $element-padding-horizontal: 5px;
 
         .btn {
             border-radius: 6px 10px 10px 6px;
-            width: $nav-width - calc($border-size * 2);
+            width: 46px;
             height: 40px;
             border: $border-size solid #fff;
             padding: 0;
@@ -105,6 +111,10 @@ $element-padding-horizontal: 5px;
             color: #fff;
 
             .element {
+                position: relative;
+                // top: 400px;
+                // left: 400px;
+                width: $element-width;
                 border-radius: 10px;
                 height: $element-height;
                 padding: $element-padding-verticle $element-padding-horizontal;
@@ -241,8 +251,4 @@ $element-padding-horizontal: 5px;
             stroke: #000;
         }
     }
-}
-
-.options-nav.active {
-    width: 20vw;
 }

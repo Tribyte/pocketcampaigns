@@ -17,6 +17,7 @@
     </head>
 
     <body>
+        {% csrf_token %}
         <nav class="navbar navbar-expand-lg">
             <a id="logo_landing" class="navbar-brand">{% include "landing/svgs/SVG-Campaigns.svg" %} Pocket Campaigns</a>
             <button id="button_landing" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

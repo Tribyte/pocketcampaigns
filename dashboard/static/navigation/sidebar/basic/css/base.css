@@ -2,6 +2,7 @@
 
 :root {
   --main-font-family: 'Quicksand', sans-serif;
+  --nav-width: 50px;
 }
 
 body {

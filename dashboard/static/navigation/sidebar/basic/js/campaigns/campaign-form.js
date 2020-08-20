@@ -44,4 +44,4 @@ $(document).ready(function () {
     //     if (document.getElementById("img").files.length > 0) {
     //         var file_data = $('#img').prop('files')[0];
     //         form_data.append('img', file_data);
-    //     }
+    //     }aa

@@ -1,0 +1,19 @@
+<div class="element campaign-element draggable">
+    <a class="campaign">
+        <input type="hidden" class="campaign-id" value={{ campaign.id }}>
+        <h2>{{ campaign.title }}</h2>
+    </a>
+    <span class="element-ico">
+        <span class="x-ico-btn">{% include 'icons/x-ico.svg'%}</span>
+        <span class="lock-open-ico-btn">{% include 'icons/lock-open-ico.svg'%}</span>
+    </span>
+</div>
+
+<div class="dropdown">
+    <div class="sub-element new-card">
+        <a class="card">
+            <h2>New Card</h2>
+            <span>{% include 'icons/plus-ico.svg'%}</span>
+        </a>
+    </div>
+</div>

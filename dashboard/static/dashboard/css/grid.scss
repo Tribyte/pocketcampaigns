@@ -1,0 +1,38 @@
+.grid {
+    width: calc(100% - var(--nav-width) - 4px);
+    margin-left: var(--nav-width);
+    min-height: calc(100vh - 4px);
+    transition: ease-in .5s;
+
+    .outline {
+        position: relative;
+        width: calc(20% - 24px);
+        height: calc(25vh - 24px);
+        border-radius: 10px;
+        border: 2px dashed transparent;
+        transition: ease-in .5s;
+        float: left;
+        z-index: 5;
+        margin: 10px;
+
+        &.active {
+            border: 2px dashed #fff;
+        }
+    }
+
+    .campaign-outline {
+        color: #fff;
+        border: 2px solid #fff;
+        
+        &.active {
+            border: 2px solid #fff;
+        }
+
+        .head {
+            h1 {
+                margin: 5px;
+                text-align: center;
+            }
+        }
+    }
+}

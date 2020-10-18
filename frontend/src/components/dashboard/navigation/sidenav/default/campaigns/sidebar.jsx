@@ -13,7 +13,10 @@ export default class BasicCampaignSideNav extends React.Component {
 
         this.state = {
             campaigns: [],
+            campaignForm: false
         }
+        
+        this.toggleCampaignForm = this.toggleCampaignForm.bind(this);
     }
     
     componentDidMount(){
@@ -42,8 +45,13 @@ export default class BasicCampaignSideNav extends React.Component {
         
         return response.json();
     }
+
+    toggleCampaignForm(){
+        this.setState({campaignForm: !this.state.campaignForm});
+    }
+
     render() {
-        const campaignFormRef = React.useRef();
+        if(this.props.focus !== "campaigns" && this.state.campaignForm){ this.toggleCampaignForm(); }
         return (
             <div id="default-campaign-sidebar">
                 <div className="main-sidebar">
@@ -58,7 +66,7 @@ export default class BasicCampaignSideNav extends React.Component {
                         {this.state.campaigns.map((value, i) => (
                             <CampaignNavElement key={i} title={value.title} />
                         ))}
-                        <div className="campaign-nav-element new-campaign-nav-element">
+                        <div onClick={this.toggleCampaignForm} className={"campaign-nav-element new-campaign-nav-element" + ((this.state.campaignForm)? " active": "")}>
                             <h2>New Campaign</h2>
                             <span>
                                 <Plus />
@@ -66,7 +74,7 @@ export default class BasicCampaignSideNav extends React.Component {
                         </div>
                     </div>
                 </div>
-                <CampaignNavForm ref={campaignFormRef}/>
+                <CampaignNavForm active={this.state.campaignForm} />
             </div>
         )
     }

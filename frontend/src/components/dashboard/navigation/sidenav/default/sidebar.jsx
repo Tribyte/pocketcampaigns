@@ -21,21 +21,22 @@ export default class BasicSideNav extends React.Component {
 
         this.logout = this.logout.bind(this);
         this.campaigns = this.campaigns.bind(this);
+        this.adventurer = this.adventurer.bind(this);
     }
 
     logout(){ window.location.href = "/logout" }
 
-    campaigns(){
-        if(this.state.expanded === "campaigns"){ this.setState({expanded: ""}); }
-        else { this.setState({expanded: "campaigns"}); }
+    expanded(value){
+        if(this.state.expanded === value){ this.setState({expanded: ""}); }
+        else { this.setState({expanded: value}); }
     }
 
-    render() {
-        let active = "";
-        if(this.state.expanded !== ""){ active="active"; }
+    campaigns(){ this.expanded("campaigns"); }
+    adventurer(){ this.expanded("adventurer"); }
 
+    render() {
         return (
-            <div id="default-sidebar" className={active}>
+            <div id="default-sidebar" className={(this.state.expanded !== "")? "active" : ""}>
                 {this.state.particles}
                 <div className="sidebar-flex">
                     <div className="nav">
@@ -43,7 +44,7 @@ export default class BasicSideNav extends React.Component {
                             <div className="top">
                                 <Logo />
                                 <button onClick={this.campaigns}><File /></button>
-                                <Person />
+                                <button onClick={this.adventurer}><Person /></button>
                                 <Apps />
                             </div>
                             <div className="bottom">
@@ -52,7 +53,7 @@ export default class BasicSideNav extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <CampaignsSidebar />
+                    <CampaignsSidebar focus={this.state.expanded}/>
                 </div>
             </div>
         )

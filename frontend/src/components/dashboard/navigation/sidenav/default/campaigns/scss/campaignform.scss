@@ -12,6 +12,8 @@
     width: 0;
     overflow-x: hidden;
     background-color: $sidebar-dark-color;
+    //timing
+    transition: $sidebar-transition;
 
     &.active {
         width: $sidebar-expanded-width - $sidebar-width;
@@ -39,14 +41,21 @@
         align-items: center;
 
         #img-label {
-            margin: $sidebar-middle-padding 0 0 0;
-            height: $sidebar-campaign-img-height;
+            height: 0;
+            margin: 0;
             width: 92%;
+            padding: 0;
+            border: 0;
             display: flex;
-            border: $sidebar-dashed-border;
             border-radius: $sidebar-border-radius;
-            padding: $sidebar-small-padding;
             cursor: pointer;
+            
+            &.active {
+                height: $sidebar-campaign-img-height;
+                padding: $sidebar-small-padding;
+                margin: $sidebar-middle-padding 0 0 0;
+                border: $sidebar-dashed-border;
+            }
 
             input {
                 width: 0.1px;
@@ -71,35 +80,51 @@
         }
 
         textarea {
-            margin: $sidebar-middle-padding 0 0 0;
+            margin: 0;
             width: 92%;
+            height: 0;
+            border: 0;
             border-radius: $sidebar-border-radius;
-            border: $sidebar-border;
             background-color: transparent;
             font-size: 1.5em;
             color: $sidebar-light-color;
             font-family: $font;
             font-weight: 100;
-            padding: $sidebar-small-padding;
+            padding: 0;
+            
+            &.active {
+                padding: $sidebar-small-padding;
+                margin: $sidebar-middle-padding 0 0 0;
+                border: $sidebar-border;
+            }
         }
 
         .options {
             display: flex;
             width: 100%;
-            margin: 0 0 $sidebar-middle-padding 0;
+            margin: 0 0 $sidebar-large-padding 0;
             justify-content: space-between;
 
+            &.active {
+                button {
+                    padding: $sidebar-small-padding;
+                    margin: $sidebar-middle-padding 2% 0 2%;
+                    border: $sidebar-border;
+                }
+            }
+
             button {
+                height: 0;
+                border: 0;
                 align-self: start;
-                border: $sidebar-border;
                 background-color: transparent;
                 color: #fff;
                 font-family: $font;
                 font-size: 1.5em;
                 font-weight: 100;
                 border-radius: $sidebar-border-radius;
-                margin: $sidebar-middle-padding 2% 0 2%;
-                padding: $sidebar-small-padding;
+                padding: 0;
+                overflow-y: hidden;
             }
     
             #campaigns-nav-advanced-options {

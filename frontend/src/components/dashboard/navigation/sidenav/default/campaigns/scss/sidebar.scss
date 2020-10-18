@@ -67,12 +67,23 @@
     
         .campaigns {
             width: 92%;
-    
+            z-index: $sidebar-front-z-index;
+
             .new-campaign-nav-element{
+                transition: $sidebar-transition;
     
                 &.active {
                     color: $sidebar-dark-color;
                     background-color: $sidebar-light-color;
+
+                    svg {
+                        stroke: $sidebar-dark-color;
+                        transform: rotate(45deg);
+                    }
+                }
+
+                svg {
+                    transition: $sidebar-transition;
                 }
             }
         }

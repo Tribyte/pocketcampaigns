@@ -26,7 +26,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 DEBUG = False 
 
 ALLOWED_HOSTS = [
-    'pocketcampaigns.org',
+    'dev.pocketcampaigns.org',
     '162.214.89.204'
 ]
 
@@ -153,12 +153,12 @@ LOGIN_REDIRECT_URL = 'home'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ['SOCIAL_AUTH_GOOGLE_OAUTH2_KEY']
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ['SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET']
-SOCIAL_AUTH_GITHUB_KEY = os.environ['SOCIAL_AUTH_GITHUB_KEY']
-SOCIAL_AUTH_GITHUB_SECRET = os.environ['SOCIAL_AUTH_GITHUB_SECRET']
-SOCIAL_AUTH_REDDIT_KEY = os.environ['SOCIAL_AUTH_REDDIT_KEY']
-SOCIAL_AUTH_REDDIT_SECRET = os.environ['SOCIAL_AUTH_REDDIT_SECRET']
+#SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ['SOCIAL_AUTH_GOOGLE_OAUTH2_KEY']
+#SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ['SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET']
+#SOCIAL_AUTH_GITHUB_KEY = os.environ['SOCIAL_AUTH_GITHUB_KEY']
+#SOCIAL_AUTH_GITHUB_SECRET = os.environ['SOCIAL_AUTH_GITHUB_SECRET']
+#SOCIAL_AUTH_REDDIT_KEY = os.environ['SOCIAL_AUTH_REDDIT_KEY']
+#SOCIAL_AUTH_REDDIT_SECRET = os.environ['SOCIAL_AUTH_REDDIT_SECRET']
 
 DATA_UPLOAD_MAX_NUMBER_FIELDS = None
 
@@ -168,6 +168,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
-CORS_ORIGIN_WHITELIST = (
-    'localhost:3000/'
-)
+CORS_ORIGIN_WHITELIST = [
+    'https://dev.pocketcampaigns.org'
+]

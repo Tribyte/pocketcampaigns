@@ -26,7 +26,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 DEBUG = False 
 
 ALLOWED_HOSTS = [
-    'backend.org',
+    'pocketcampaigns.org',
     '162.214.89.204'
 ]
 

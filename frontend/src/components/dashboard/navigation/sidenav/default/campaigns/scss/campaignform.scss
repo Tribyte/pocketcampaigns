@@ -1,0 +1,112 @@
+@import "../../../../../variables.scss";
+
+#campaign-form {
+    //positioning
+    position: fixed;
+    top: 0;
+    left: $sidebar-expanded-width;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    //measurements
+    width: 0;
+    overflow-x: hidden;
+    background-color: $sidebar-dark-color;
+
+    &.active {
+        width: $sidebar-expanded-width - $sidebar-width;
+    }
+
+    .header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        h1 {
+            font-family: $font;
+            font-weight: 100;
+        }
+
+        button {
+            border: 0;
+            background-color: transparent;
+        }
+    }
+
+    .body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        #img-label {
+            margin: $sidebar-middle-padding 0 0 0;
+            height: $sidebar-campaign-img-height;
+            width: 92%;
+            display: flex;
+            border: $sidebar-dashed-border;
+            border-radius: $sidebar-border-radius;
+            padding: $sidebar-small-padding;
+            cursor: pointer;
+
+            input {
+                width: 0.1px;
+                height: 0.1px;
+                opacity: 0;
+                overflow: hidden;
+                position: absolute;
+                z-index: $background-z-index;
+            }
+        }
+
+        input {
+            width: 92%;
+            border-radius: $sidebar-border-radius;
+            border: $sidebar-border;
+            background-color: transparent;
+            font-size: 1.5em;
+            color: $sidebar-light-color;
+            font-family: $font;
+            font-weight: 100;
+            padding: $sidebar-small-padding;
+        }
+
+        textarea {
+            margin: $sidebar-middle-padding 0 0 0;
+            width: 92%;
+            border-radius: $sidebar-border-radius;
+            border: $sidebar-border;
+            background-color: transparent;
+            font-size: 1.5em;
+            color: $sidebar-light-color;
+            font-family: $font;
+            font-weight: 100;
+            padding: $sidebar-small-padding;
+        }
+
+        .options {
+            display: flex;
+            width: 100%;
+            margin: 0 0 $sidebar-middle-padding 0;
+            justify-content: space-between;
+
+            button {
+                align-self: start;
+                border: $sidebar-border;
+                background-color: transparent;
+                color: #fff;
+                font-family: $font;
+                font-size: 1.5em;
+                font-weight: 100;
+                border-radius: $sidebar-border-radius;
+                margin: $sidebar-middle-padding 2% 0 2%;
+                padding: $sidebar-small-padding;
+            }
+    
+            #campaigns-nav-advanced-options {
+                align-self: end;
+                font-size: 1em;
+                border: 0;
+            }
+        }
+    }
+}

@@ -1,0 +1,27 @@
+@import "../../../../../variables.scss";
+
+.campaign-nav-element {
+    cursor: pointer;
+    margin-top: $sidebar-middle-padding;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $sidebar-small-padding;
+    border: $sidebar-border;
+    border-radius: $sidebar-border-radius;
+
+    h2 {
+        margin: 0;
+        font-family: $font;
+        font-weight: 100;
+    }
+
+    span {
+        display: flex;
+        align-items: center;
+        height: $sidebar-campaign-svg-width;
+        svg {
+            width: $sidebar-campaign-svg-width;
+        }
+    }
+}

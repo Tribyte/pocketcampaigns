@@ -1,0 +1,61 @@
+@import "../variables.scss";
+
+nav {
+    position: relative;
+    color: #fff;
+    font-family: 'Quicksand', sans-serif;
+    background-color: #242222;
+    height: $nav-height;
+    display: flex;
+    justify-content: space-between;
+    z-index: 10;
+
+    button {
+        cursor: pointer;
+        outline: none;
+        background-color: transparent;
+        border: 0;
+    }
+
+    .left-nav {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: left;
+
+        svg {
+            padding-left: 20px;
+            height: 2.5em;
+            fill: #fff;
+        }
+
+        #logo-txt {
+            padding-left: 20px;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: bolder;
+            font-size: 1.6em;
+            color: #fff;
+            text-decoration: none;
+        }
+    }
+
+    .right-nav {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: right;
+
+        button {
+            padding-right: 20px;
+            text-decoration: none;
+            color: #fff;
+            font-size: 1.2em;
+        }
+
+    }
+}
+
+.navbar-brand {
+    font-size: 1.6em !important;
+    font-weight: bold;
+}

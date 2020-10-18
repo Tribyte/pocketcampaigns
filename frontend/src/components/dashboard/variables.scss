@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+
+$font: 'Quicksand', sans-serif;
+
+//<!-- colors -->
+$white: #fff;
+$black-pearl: #040d16;
+
+//<!-- background -->
+//z-index
+$background-z-index: 0;
+
+// <!-- sidebar -->
+//color
+$sidebar-light-color: $white;
+$sidebar-dark-color: $black-pearl;
+//measurements
+$sidebar-height: 100vh;
+$sidebar-width: 4em;
+$sidebar-expanded-width: 26em;
+$sidebar-svg-width: 2.5em;
+$sidebar-small-padding: 5px;
+$sidebar-middle-padding: 10px;
+$sidebar-large-padding: 20px;
+$sidebar-border: 2px solid $sidebar-light-color;
+$sidebar-dashed-border: 2px dashed $sidebar-light-color;
+$sidebar-border-radius: 10px;
+    //campaign
+$sidebar-campaign-img-height: 6em;
+$sidebar-campaign-svg-width: 2em;
+$sidebar-campaign-search-svg-width: 3em;
+//timing
+$sidebar-transition: ease-in-out .75s;
+//z-index
+$sidebar-back-z-index: 5;
+$sidebar-middle-z-index: 7;
+$sidebar-front-z-index: 10;

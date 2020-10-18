@@ -1,0 +1,117 @@
+@import "../../../../variables.scss";
+
+#default-sidebar {
+    position: relative;
+    overflow-x: hidden;
+    //color
+    background-color: $sidebar-dark-color;
+    color: $sidebar-light-color;
+    //measurements
+    height: $sidebar-height;
+    width: $sidebar-width;
+    //timing
+    transition: $sidebar-transition;
+    //z-index
+    z-index: $sidebar-back-z-index;
+
+    &.active {
+        width: $sidebar-expanded-width;
+        transition: overflow-x initial $sidebar-transition;
+
+        #background {
+            width: $sidebar-expanded-width !important;
+        }
+    }
+
+    #background {
+        //positioning
+        position: absolute;
+        top: 0;
+        left: 0;
+        //measurements
+        height: 100%;
+        max-height: $sidebar-height;
+        width: $sidebar-expanded-width;
+        overflow: hidden;
+        //timing
+        transition: $sidebar-transition;
+        //z-index
+        z-index: $sidebar-middle-z-index;
+    }
+
+    .sidebar-flex {
+        display: flex;
+        max-height: 100vh;
+
+        .nav {
+            float: left;
+            width: $sidebar-width;
+            height: $sidebar-height;
+            display: flex;
+    
+            .nav-links {
+                //positioning
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-content: center;
+                //measurements
+                width: 100%;
+    
+                button {
+                    //positioning
+                    position: relative;
+                    //color
+                    background-color: transparent;
+                    //measurements
+                    border: 0;
+                    //z-index
+                    z-index: $sidebar-front-z-index;
+                }
+    
+                .top {
+                    //positioning
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: left;
+                    align-items: center;
+        
+                    .logo {
+                        //color
+                        fill: $sidebar-light-color;
+                    }
+                    
+                    svg {
+                        //positioning
+                        position: relative;
+                        margin-top: $sidebar-middle-padding;
+                        //measurements
+                        width: $sidebar-svg-width;
+                        padding: $sidebar-small-padding;
+                        //cursor
+                        cursor: pointer;
+                        //z-index
+                        z-index: $sidebar-front-z-index;
+                    }
+                }
+        
+                .bottom {
+                    //positioning
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: left;
+                    align-items: center;
+        
+                    svg {
+                        //positioning
+                        margin-top: $sidebar-large-padding;
+                        //measurements
+                        padding: $sidebar-small-padding;
+                        //cursor
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,80 @@
+@import "../../../../../variables.scss";
+
+#default-campaign-sidebar {
+    .main-sidebar {
+        //positioning
+        float: left;
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
+        align-items: center;
+        //measurements
+        width: $sidebar-expanded-width - $sidebar-width;
+        //z-index
+        z-index: $sidebar-front-z-index;
+        
+        .title {
+            //positioning
+            display: flex;
+            justify-content: center;
+            //measurements
+            
+            h1 {
+                //font
+                font-family: $font;
+                font-weight: 100;
+            }
+        }
+        
+        .search {
+            //positioning
+            display: flex;
+            justify-content: center;
+            //measurements
+            // padding: $sidebar-large-padding;
+    
+            input {
+                //color
+                background: transparent;
+                color: $sidebar-light-color;
+                //measurements
+                border-top: $sidebar-border;
+                border-left: $sidebar-border;
+                border-bottom: $sidebar-border;
+                border-right: 0;
+                border-top-left-radius: $sidebar-border-radius;
+                border-bottom-left-radius: $sidebar-border-radius;
+                //font
+                font-size: 1.5em;
+            }
+    
+            button {
+                //positioning
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                //color
+                background-color: transparent;
+                //measurements
+                border: $sidebar-border;
+                border-radius: $sidebar-border-radius;
+    
+                svg {
+                    height: $sidebar-campaign-search-svg-width;
+                }
+            }
+        }
+    
+        .campaigns {
+            width: 92%;
+    
+            .new-campaign-nav-element{
+    
+                &.active {
+                    color: $sidebar-dark-color;
+                    background-color: $sidebar-light-color;
+                }
+            }
+        }
+    }
+}

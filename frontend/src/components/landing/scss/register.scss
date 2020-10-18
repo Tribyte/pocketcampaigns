@@ -1,0 +1,56 @@
+@import "../variables.scss";
+
+@import "../variables.scss";
+
+#landing-register-body {
+    position: relative;
+    z-index: 10;
+    min-height: calc(100vh - #{$nav-height});
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    form {
+        font-family: $font;
+        border-radius: 27px;
+        padding: 30px;
+        background-color: #fff;
+
+        .header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            h1 {
+                margin: 0 0 20px 0;
+            }
+        }
+
+        .form-body {
+            display: flex;
+            flex-direction: column;
+
+            label {
+                margin: 10px 0 5px 0;
+            }
+
+            input {
+                outline: none;
+                width: 100%;
+                border-radius: 7px;
+                height: 3em;
+                border: 1px solid #ccc;
+                background: #eee;
+            }
+
+            #register {
+                background-color: #333;
+                color: #fff;
+                border: 0;
+                border-radius: 7px;
+                height: 4em;
+                margin: 20px 0 0 0;
+            }
+        }
+    }
+}

@@ -1,14 +1,14 @@
 import React from 'react'
-import './scss/campaignform.scss'
+import './scss/cardform.scss'
 
 import { ReactComponent as Eye } from "../../../../icons/eye-ico.svg";
 
-export default class CampaignNavForm extends React.Component {
-    constructor(props){
+export default class CardNavForm extends React.Component {
+    constructor(props) {
         super(props);
 
         this.state = {
-            title: "",
+            name: "",
             description: "",
         }
 
@@ -16,9 +16,9 @@ export default class CampaignNavForm extends React.Component {
         this.submit = this.submit.bind(this);
     }
 
-    input(event){
+    input(event) {
         const target = event.target;
-        this.setState({[target.name]: target.value});
+        this.setState({ [target.name]: target.value });
     }
 
     submit(event) {
@@ -27,14 +27,14 @@ export default class CampaignNavForm extends React.Component {
         this.campaignSubmit().then(data => {
             this.props.submit();
             this.setState({
-                title: "",
+                name: "",
                 description: ""
             })
         }).catch(data => console.log(data));
     }
 
     async campaignSubmit() {
-        const response = await fetch("/api/campaigns/", {
+        const response = await fetch("/api/cards/", {
             method: 'POST',
             mode: 'cors',
             headers: {
@@ -42,7 +42,8 @@ export default class CampaignNavForm extends React.Component {
                 'Authorization': ' Token ' + localStorage.getItem("token"),
             },
             body: JSON.stringify({
-                title: this.state.title,
+                campaign: this.props.formKey,
+                name: this.state.name,
                 description: this.state.description,
                 private: "true",
             })
@@ -51,36 +52,40 @@ export default class CampaignNavForm extends React.Component {
         return response.json();
     }
 
-    render(){
-        return(
-            <div id="campaign-form" className={(this.props.form === "campaign")? "active" : ""}>
+    render() {
+        return (
+            <div id="card-form" className={(this.props.form === "card")? "active" : ""}>
                 <form>
                     <div className="header">
-                        <h1>New Campaign</h1>
+                        <h1>New Card</h1>
                         <button><Eye /></button>
                     </div>
                     <div className="body">
-                        <label id="img-label" className={(this.state.title === "") ? "" : "active"}>
+                        <label id="img-label" className={(this.state.name === "") ? "" : "active"}>
                             <input type="file" name="img" multiple={false} />
                         </label>
                         <input
                             onChange={this.input}
-                            type="text" name="title"
-                            placeholder="Title"
-                            value={this.state.title}
-                            className={(this.state.title === "") ? "" : "active"}
+                            type="text" name="name"
+                            placeholder="Name"
+                            value={this.state.name}
+                            className={(this.state.name === "") ? "" : "active"}
                             autoComplete="off"
+                        />
+                        <input
+                            type="text" name="identifiers"
+                            placeholder="Identifiers"
+
                         />
                         <textarea
                             onChange={this.input}
                             name="description"
                             placeholder="Description"
-                            className={(this.state.title === "") ? "" : "active"}
+                            className={(this.state.name === "") ? "" : "active"}
                             value={this.state.description}
                         ></textarea>
-                        <div className={(this.state.title === "") ? "options" : "options active"}>
+                        <div className={(this.state.name === "") ? "options" : "options active"}>
                             <button onClick={this.submit}>Create</button>
-                            <button id="campaigns-nav-advanced-options">Advanced Options</button>
                         </div>
                     </div>
                 </form>

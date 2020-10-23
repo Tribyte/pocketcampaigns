@@ -1,6 +1,6 @@
 @import "../../../../../variables.scss";
 
-#campaign-form {
+#card-form {
     //positioning
     position: fixed;
     top: 0;
@@ -51,21 +51,14 @@
             margin: 0;
             //measurements
             width: 92%;
-            height: 0;
-            padding: 0;
-            border: 0;
+            height: $sidebar-campaign-img-height;
+            padding: $sidebar-small-padding;
+            border: $sidebar-dashed-border;
             border-radius: $sidebar-border-radius;
             cursor: pointer;
             //timing
             transition: $sidebar-transition;
-            
-            &.active {
-                //measurements
-                height: $sidebar-campaign-img-height;
-                padding: $sidebar-small-padding;
-                border: $sidebar-dashed-border;
-            }
-            
+
             input {
                 //color
                 opacity: 0;
@@ -84,6 +77,8 @@
         input {
             //color
             color: $sidebar-light-color;
+            //positioning
+            margin: $sidebar-middle-padding 0 0 0;
             //measurements
             width: 92%;
             border-radius: $sidebar-border-radius;
@@ -96,10 +91,6 @@
             font-weight: $font-weight;
             //timing
             transition: $sidebar-transition;
-
-            &.active {
-                margin: $sidebar-middle-padding 0 0 0;
-            }
         }
 
         textarea {
@@ -107,28 +98,19 @@
             background-color: transparent;
             color: $sidebar-light-color;
             //positioning
-            margin: 0;
+            margin: $sidebar-middle-padding 0 0 0;
             //measurements
             width: 92%;
-            height: 0;
-            border: 0;
+            height: initial;
+            border: $sidebar-border;
             border-radius: $sidebar-border-radius;
-            padding: 0;
+            padding: $sidebar-small-padding;
             //font
             font-size: $font-size;
             font-family: $font;
             font-weight: $font-weight;
             //timing
             transition: $sidebar-transition;
-            
-            &.active {
-                //positioning
-                margin: $sidebar-middle-padding 0 0 0;
-                //measurements
-                height: initial;
-                padding: $sidebar-small-padding;
-                border: $sidebar-border;
-            }
         }
 
         .options {
@@ -141,28 +123,17 @@
             //timing
             transition: $sidebar-transition;
 
-            &.active {
-                button {
-                    //positioning
-                    margin: $sidebar-middle-padding 2% 0 2%;
-                    //measurements
-                    height: initial;
-                    padding: $sidebar-small-padding;
-                    border: $sidebar-border;
-                }
-            }
-
             button {
                 //color
                 background-color: transparent;
                 color: $sidebar-light-color;
                 //positioning
+                margin: $sidebar-middle-padding 2% 0 2%;
                 align-self: start;
                 overflow-y: hidden;
                 //measurements
-                height: 0;
-                border: 0;
-                padding: 0;
+                border: $sidebar-border;
+                padding: $sidebar-small-padding;
                 border-radius: $sidebar-border-radius;
                 //font
                 font-family: $font;

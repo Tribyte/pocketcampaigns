@@ -1,9 +1,9 @@
 @import "../../../../../variables.scss";
 
-
-.campaign-nav-element {
+.card-nav-element {
     cursor: pointer;
     margin-top: $sidebar-middle-padding;
+    margin-left: $sidebar-large-padding;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -26,7 +26,7 @@
         transition: $sidebar-transition;
 
         &.active {
-            width: $sidebar-expanded-icon-options;
+            width: initial;
             transition: overflow-x initial $sidebar-transition;
         }
 
@@ -43,39 +43,6 @@
                 width: $sidebar-campaign-svg-width;
             }
         }
-    }
-}
 
-#campaign-nav-dropdown {
-    .cards {
-        overflow-y: hidden;
-        transition: $sidebar-transition;
-        height: 0;
-
-        &.active {
-            height: 100%;
-        }
-
-        .new-card-nav-element{
-            transition: $sidebar-transition;
-
-            &.active {
-                color: $sidebar-dark-color;
-                background-color: $sidebar-light-color;
-
-                svg {
-                    stroke: $sidebar-dark-color;
-                    transform: rotate(45deg);
-                }
-            }
-
-            span {
-                width: initial;
-
-                svg {
-                    transition: $sidebar-transition;
-                }
-            }
-        }
     }
 }

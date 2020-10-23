@@ -19,7 +19,7 @@ export default class App extends React.Component {
             if(window.location.pathname==="/logout"){ window.location.pathname = "/"; }
         }
 
-        if(this.state.user){
+        if(this.state.user !== "undefined" && this.state.user){
             return ( <Dashboard /> )
         }
 

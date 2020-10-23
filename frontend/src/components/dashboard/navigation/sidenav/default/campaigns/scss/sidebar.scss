@@ -82,8 +82,12 @@
                     }
                 }
 
-                svg {
-                    transition: $sidebar-transition;
+                span {
+                    width: initial;
+
+                    svg {
+                        transition: $sidebar-transition;
+                    }
                 }
             }
         }

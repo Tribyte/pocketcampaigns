@@ -16,23 +16,29 @@ export default class BasicSideNav extends React.Component {
         super(props);
         this.state = {
             expanded: "",
+            form: "",
+            formKey: 0,
             particles: <Particle id="background" type="bubbles" width="400" />
         };
 
         this.logout = this.logout.bind(this);
         this.campaigns = this.campaigns.bind(this);
         this.adventurer = this.adventurer.bind(this);
+        this.setForm = this.setForm.bind(this);
+        this.setFormKey = this.setFormKey.bind(this);
     }
 
     logout(){ window.location.href = "/logout" }
 
     expanded(value){
-        if(this.state.expanded === value){ this.setState({expanded: ""}); }
-        else { this.setState({expanded: value}); }
+        this.setState({expanded: (this.state.expanded === value)? "": value});
     }
 
     campaigns(){ this.expanded("campaigns"); }
     adventurer(){ this.expanded("adventurer"); }
+
+    setForm(formName){ this.setState({form: (this.state.form === formName)? "": formName}); }
+    setFormKey(formKey){ this.setState({formKey: formKey}); }
 
     render() {
         return (
@@ -53,7 +59,13 @@ export default class BasicSideNav extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <CampaignsSidebar focus={this.state.expanded}/>
+                    <CampaignsSidebar
+                        focus={this.state.expanded} 
+                        form={this.state.form}
+                        setForm={this.setForm}
+                        formKey={this.state.formKey}
+                        setFormKey={this.setFormKey}
+                    />
                 </div>
             </div>
         )

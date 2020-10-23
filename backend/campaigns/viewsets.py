@@ -1,9 +1,11 @@
 from campaigns.models import Campaign, Card, Tag, Note
 from campaigns.forms import CampaignForm, CardForm, NoteForm, TagForm
 from api.permissions import IsOwner, IsSuperUser, IsUser
+from django.contrib.auth.models import User
 from .serializers import CampaginSerializer, CardSerializer, NoteSerializer, TagSerializer
 from rest_framework import viewsets
 from rest_framework.response import Response
+from rest_framework.authtoken.models import Token
 from rest_framework.authentication import TokenAuthentication, SessionAuthentication
 from rest_framework.parsers import MultiPartParser, FormParser, JSONParser, FileUploadParser
 import json
@@ -14,13 +16,15 @@ class CampaignViewSet(viewsets.ViewSet):
     parser_classes = [ MultiPartParser, FormParser, JSONParser, ]
 
     def list(self, request):
-        queryset = Campaign.objects.filter(owner=request.user.id)
+        user = User.objects.get(id = Token.objects.get(key=request.headers['Authorization'].split(" ")[1]).user_id)
+        queryset = Campaign.objects.filter(owner=user.id)
         serializer = CampaginSerializer(queryset, many=True)
         return Response(serializer.data)
 
     def retrieve(self, request, pk=None):
         campaign = Campaign.objects.get(pk=pk)
-        if(campaign.owner != request.user): return Response({'Error': 'Authentication error'})
+        user = User.objects.get(id = Token.objects.get(key=request.headers['Authorization'].split(" ")[1]).user_id)
+        if(campaign.owner != user): return Response({'Error': 'Authentication error'})
         queryset = campaign
         serializer = CampaginSerializer(queryset)
         return Response(serializer.data)
@@ -29,8 +33,9 @@ class CampaignViewSet(viewsets.ViewSet):
         form = CampaignForm(request.data)
         if(form.is_valid()):
             new_campaign = form.save(commit=False)
-            new_campaign.creator = request.user
-            new_campaign.owner = request.user
+            user = User.objects.get(id = Token.objects.get(key=request.headers['Authorization'].split(" ")[1]).user_id)
+            new_campaign.creator = user
+            new_campaign.owner = user
             if(request.FILES): new_campaign.img = request.data['img']
             new_campaign.save()
             serializer = CampaginSerializer(new_campaign)
@@ -39,7 +44,8 @@ class CampaignViewSet(viewsets.ViewSet):
 
     def update(self, request, pk=None):
         campaign = Campaign.objects.get(pk=pk)
-        if(campaign.owner != request.user): return Response({'Error': 'Authentication error'})
+        user = User.objects.get(id = Token.objects.get(key=request.headers['Authorization'].split(" ")[1]).user_id)
+        if(campaign.owner != user): return Response({'Error': 'Authentication error'})
         form = CampaignForm(request.data, instance=campaign)
         if(form.is_valid()):
             campaign = form.save(commit=False)
@@ -51,7 +57,8 @@ class CampaignViewSet(viewsets.ViewSet):
 
     def destroy(self, request, pk=None):
         campaign = Campaign.objects.get(pk=pk)
-        if(campaign.owner != request.user): return Response({'Error': 'Authentication error'})
+        user = User.objects.get(id = Token.objects.get(key=request.headers['Authorization'].split(" ")[1]).user_id)
+        if(campaign.owner != user): return Response({'Error': 'Authentication error'})
         for card in campaign.cards.all():
             for note in Card.objects.get(id=card.id).notes.all():
                 Note.objects.get(id=note.id).delete()
@@ -78,7 +85,8 @@ class CardViewSet(viewsets.ViewSet):
 
     def list(self, request):
         queryset = None
-        campaigns = Campaign.objects.filter(owner=request.user.id)
+        user = User.objects.get(id = Token.objects.get(key=request.headers['Authorization'].split(" ")[1]).user_id)
+        campaigns = Campaign.objects.filter(owner=user.id)
         for campaign in campaigns:
             if(queryset == None):
                 queryset = campaign.cards.all()
@@ -89,14 +97,16 @@ class CardViewSet(viewsets.ViewSet):
 
     def retrieve(self, request, pk=None):
         queryset = Card.objects.get(pk=pk)
-        if(queryset.owner != request.user): return Response({'Error': 'Authentication error'})
+        user = User.objects.get(id = Token.objects.get(key=request.headers['Authorization'].split(" ")[1]).user_id)
+        if(queryset.owner != user): return Response({'Error': 'Authentication error'})
         serializer = CardSerializer(queryset)
         return Response(serializer.data)
 
     def create(self, request):
         if('campaign' not in request.data): return Response({'Error': 'Missing "campaign" in form data'})
         campaign = Campaign.objects.get(pk=request.data['campaign'])
-        if(campaign.owner != request.user): return Response({'Error': 'Authentication error'})
+        user = User.objects.get(id = Token.objects.get(key=request.headers['Authorization'].split(" ")[1]).user_id)
+        if(campaign.owner != user): return Response({'Error': 'Authentication error'})
         form = CardForm(request.data)
         if(form.is_valid()):
             new_card = form.save(commit=False)
@@ -109,8 +119,9 @@ class CardViewSet(viewsets.ViewSet):
 
     def update(self, request, pk=None):
         if('campaign' not in request.data): return Response({'Error': 'Missing "campaign" in form data'})
+        user = User.objects.get(id = Token.objects.get(key=request.headers['Authorization'].split(" ")[1]).user_id)
         campaign = Campaign.objects.get(pk=request.data['campaign'])
-        if(campaign.owner != request.user or not campaign.cards.get(pk=pk)): return Response({'Error': 'Authentication error'})
+        if(campaign.owner != user or not campaign.cards.get(pk=pk)): return Response({'Error': 'Authentication error'})
         card = Card.objects.get(pk=pk)
         form = CardForm(request.data, instance=card)
         if(form.is_valid()):
@@ -122,9 +133,11 @@ class CardViewSet(viewsets.ViewSet):
         return Response({'Test': 'False Broke'})
 
     def destroy(self, request, pk=None):
+        user = User.objects.get(id = Token.objects.get(key=request.headers['Authorization'].split(" ")[1]).user_id)
+        print(request.body)
         if('campaign' not in request.data): return Response({'Error': 'Missing "campaign" in form data'})
         campaign = Campaign.objects.get(pk=request.data['campaign'])
-        if(campaign.owner != request.user or not campaign.cards.get(pk=pk)): return Response({'Error': 'Authentication error'})
+        if(campaign.owner != user or not campaign.cards.get(pk=pk)): return Response({'Error': 'Authentication error'})
         for note in Card.objects.get(pk=pk).notes.all():
             Note.objects.get(id=note.id).delete()
         Card.objects.get(pk=pk).img.delete()

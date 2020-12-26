@@ -1,7 +1,7 @@
 @import "../../../../variables.scss";
 
 #default-sidebar {
-    position: relative;
+    position: fixed;
     overflow-x: hidden;
     //color
     background-color: $sidebar-dark-color;

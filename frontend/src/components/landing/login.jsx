@@ -46,10 +46,10 @@ export default class Login extends React.Component {
                         <h1>Sign In With</h1>
                     </div>
                     <div className="social">
-                        <a href="{% url 'social:begin' 'google-oauth2' %}" className="google">Login with Google</a>
-                        <a href="{% url 'social:begin' 'reddit' %}" className="reddit">Login with Reddit</a>
-                        <a href="{% url 'social:begin' 'twitter' %}" className="twitter">Login with Twitter</a>
-                        <a href="{% url 'social:begin' 'github' %}" className="github">Login with Github</a>
+                        <a href="/oauth/login/google-oauth2/" className="google">Login with Google</a>
+                        <a href="/oauth/login/reddit/" className="reddit">Login with Reddit</a>
+                        <a href="/oauth/login/twitter/" className="twitter">Login with Twitter</a>
+                        <a href="/oauth/login/github/" className="github">Login with Github</a>
                     </div>
                     <div className="form-body">
                         <label>Username

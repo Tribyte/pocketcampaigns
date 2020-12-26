@@ -133,6 +133,8 @@ export default class BasicCampaignSideNav extends React.Component {
                                 setFormKey={this.props.setFormKey}
                                 delete={this.deleteCampaign}
                                 cardDelete={this.deleteCard}
+                                drop={this.props.drop}
+                                toggleSidebar={this.props.toggleSelf}
                             />
                         ))}
                         <div 

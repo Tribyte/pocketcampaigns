@@ -40,6 +40,7 @@ export default class CampaignNavElement extends React.Component {
     render(){
 
         const dragStart = e => { 
+            // this.props.toggleSidebar();
             this.setDragging(e.pageX, e.pageY);
             this.target = e.target;
             document.addEventListener('mousemove', this.drag);
@@ -51,6 +52,7 @@ export default class CampaignNavElement extends React.Component {
             document.removeEventListener('mousemove', this.drag);
             e.target.style.left = "0px";
             e.target.style.top = "0px";
+            this.props.drop(this.props.values.id, "campaign", e.clientX, e.clientY);
         }
 
         return (

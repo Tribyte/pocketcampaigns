@@ -60,11 +60,13 @@ export default class BasicSideNav extends React.Component {
                         </div>
                     </div>
                     <CampaignsSidebar
+                        toggleSelf={this.campaigns}
                         focus={this.state.expanded} 
                         form={this.state.form}
                         setForm={this.setForm}
                         formKey={this.state.formKey}
                         setFormKey={this.setFormKey}
+                        drop={this.props.drop}
                     />
                 </div>
             </div>

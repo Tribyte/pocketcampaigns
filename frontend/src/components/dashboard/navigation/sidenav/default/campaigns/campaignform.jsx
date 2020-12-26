@@ -30,7 +30,7 @@ export default class CampaignNavForm extends React.Component {
                 title: "",
                 description: ""
             })
-        }).catch();
+        });
     }
 
     async campaignSubmit() {

@@ -10,8 +10,12 @@ export default class CampaignNavElement extends React.Component {
     constructor(props){
         super(props);
 
-        this.state = { active: false }
+        this.state = {
+            active: false,
+            startCoords: {x: 0, y: 0},
+        }
 
+        this.target = {};
         this.getCampaignClick = this.getCampaignClick.bind(this);
         this.toggleCardForm = this.toggleCardForm.bind(this);
         this.delete = this.delete.bind(this);
@@ -24,14 +28,40 @@ export default class CampaignNavElement extends React.Component {
         this.props.setFormKey(this.props.values.id);
     }
 
-    delete(){
-        this.props.delete(this.props.values.id);
+    delete(){ this.props.delete(this.props.values.id); }
+
+    setDragging(x, y){ this.setState({ startCoords: {x: x, y: y} }); }
+
+    drag = e => {
+        this.target.style.left = (e.pageX - this.state.startCoords.x) + "px";
+        this.target.style.top = (e.pageY - this.state.startCoords.y) + "px";
     }
 
     render(){
+
+        const dragStart = e => { 
+            this.setDragging(e.pageX, e.pageY);
+            this.target = e.target;
+            document.addEventListener('mousemove', this.drag);
+        }
+
+        const dragOver = e => { e.stopPropagation(); }
+
+        const dragEnd = e => {
+            document.removeEventListener('mousemove', this.drag);
+            e.target.style.left = "0px";
+            e.target.style.top = "0px";
+        }
+
         return (
             <div id="campaign-nav-dropdown">
-                <div onClick={this.getCampaignClick} className="campaign-nav-element">
+                <div
+                    onClick={this.getCampaignClick}
+                    className="campaign-nav-element"
+                    onMouseDown={dragStart}
+                    onDragOver={dragOver}
+                    onMouseUp={dragEnd}
+                >
                     <h2>{this.props.values.title}</h2>
                     <span className={(this.state.active)? "active": ""}>
                         <button onClick={this.delete}><X /></button>

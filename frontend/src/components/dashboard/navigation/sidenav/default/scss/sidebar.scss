@@ -13,10 +13,11 @@
     transition: $sidebar-transition;
     //z-index
     z-index: $sidebar-back-z-index;
-
+    
     &.active {
         width: $sidebar-expanded-width;
-        transition: overflow-x initial $sidebar-transition;
+        animation: $sidebar-transition-time delay-overflow;
+        overflow-x: initial;
 
         #background {
             width: $sidebar-expanded-width !important;
@@ -114,4 +115,9 @@
             }
         }
     }
+}
+
+@keyframes delay-overflow {
+  from { overflow-x: hidden; }
+  100% { overflow-x: hidden; }
 }

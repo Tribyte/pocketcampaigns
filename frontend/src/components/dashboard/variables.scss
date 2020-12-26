@@ -34,7 +34,9 @@ $sidebar-campaign-img-height: 6em;
 $sidebar-campaign-svg-width: 2em;
 $sidebar-campaign-search-svg-width: 3em;
 //timing
-$sidebar-transition: ease-in-out .75s;
+$sidebar-transition-time: .75s;
+$sidebar-transition-timing-function: ease-in-out;
+$sidebar-transition: $sidebar-transition-timing-function $sidebar-transition-time;
 //z-index
 $sidebar-back-z-index: 5;
 $sidebar-middle-z-index: 7;

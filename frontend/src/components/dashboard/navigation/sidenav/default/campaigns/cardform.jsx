@@ -72,11 +72,6 @@ export default class CardNavForm extends React.Component {
                             className={(this.state.name === "") ? "" : "active"}
                             autoComplete="off"
                         />
-                        <input
-                            type="text" name="identifiers"
-                            placeholder="Identifiers"
-
-                        />
                         <textarea
                             onChange={this.input}
                             name="description"

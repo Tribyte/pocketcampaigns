@@ -1,0 +1,15 @@
+@import "../../variables.scss";
+
+.page-fix {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    margin-left: calc(#{$sidebar-width} + #{$sidebar-middle-padding});
+    margin-top: $sidebar-middle-padding;
+
+    #grid {
+        display: flex;
+        justify-content: left;
+        flex-wrap: wrap;
+    }
+}

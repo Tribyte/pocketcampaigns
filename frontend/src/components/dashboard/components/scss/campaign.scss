@@ -1,0 +1,9 @@
+@import "../../variables.scss";
+
+.campaign-dash-card {
+    color: $sidebar-dark-color;
+    width: 14%;
+    padding: $sidebar-large-padding;
+    background-color: $sidebar-light-color;
+    border-radius: $sidebar-border-radius;
+}

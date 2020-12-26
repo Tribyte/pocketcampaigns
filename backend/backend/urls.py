@@ -10,7 +10,7 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^oauth/', include('social_django.urls', namespace='social')),
-    path('oath/finish/', views.oauth, name='home'),
+    path('oauth/finish/', views.oauth, name='home'),
     path('api/logout', views.logout, name="logout"),
     path('api/auth/user', UserAPIView.as_view()),
     path('api/auth/register', RegisterAPIView.as_view()),

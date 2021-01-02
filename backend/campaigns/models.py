@@ -22,8 +22,8 @@ class Card(models.Model):
     img = models.ImageField(upload_to='card/', blank=True, null=True)
     name = models.CharField(max_length=256, default=" ")
     description = models.TextField(blank=True, null=True)
-    notes = models.ManyToManyField(Note, blank=True)
-    tags = models.ManyToManyField(Tag, blank=True)
+    notes = models.ManyToManyField(Note, related_name="card_notes", blank=True)
+    tags = models.ManyToManyField(Tag, related_name="card_tags", blank=True)
     def __str__(self):
         return self.name
 
@@ -35,8 +35,8 @@ class Campaign(models.Model):
     creator = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET(get_sentinel_user), blank=True, null=True, related_name="creator")
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET(get_sentinel_user), blank=True, null=True, related_name="owner")
     parties = models.ManyToManyField(Party, blank=True)
-    cards = models.ManyToManyField(Card, blank=True)
-    tags = models.ManyToManyField(Tag, blank=True)
+    cards = models.ManyToManyField(Card, related_name="campaign_cards", blank=True)
+    tags = models.ManyToManyField(Tag, related_name="campaign_tags", blank=True)
 
     def __str__(self):
         return self.title

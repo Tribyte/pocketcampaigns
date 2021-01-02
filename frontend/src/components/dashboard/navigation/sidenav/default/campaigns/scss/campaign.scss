@@ -12,6 +12,9 @@
     border: $sidebar-border;
     border-radius: $sidebar-border-radius;
 
+    -moz-user-select: none;
+    user-select: none;
+
     h2 {
         margin: 0;
         font-family: $font;

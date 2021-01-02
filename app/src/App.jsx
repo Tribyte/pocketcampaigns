@@ -1,9 +1,9 @@
 import React from 'react'
-import Landing from './components/landing/landing.js';
-import Dashboard from './components/dashboard/dashboard.js';
+import Index from './components/index.js';
+import Login from './components/login.js'
 
 export default class App extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
 
         this.state = {
@@ -11,17 +11,17 @@ export default class App extends React.Component {
         }
     }
 
-    componentDidMount(){
-        if(window.location.pathname.substr(0,7)==="/token="){
+    componentDidMount() {
+        if(window.location.pathname.substr(0, 7) === "/token=") {
             localStorage.setItem('token', window.location.pathname.substr(7, window.location.pathname.length - 1));
             window.location = "/";
             return;
         }
 
-        if(window.location.pathname==="/logout"){
+        if(window.location.pathname === "/logout") {
             localStorage.removeItem("token");
-    
-            this.setState({user: localStorage.getItem("token")});
+
+            this.setState({ user: localStorage.getItem("token") });
             window.location.pathname = "/api/logout";
             return;
         }
@@ -30,10 +30,9 @@ export default class App extends React.Component {
     }
 
     render() {
-        if(this.state.user !== "undefined" && this.state.user){
-            return ( <Dashboard /> )
+        if (this.state.user !== "undefined" && this.state.user){
+            return (<Index />)
         }
-
-        return ( <Landing /> )
+        return (<Login />)
     }
 }

@@ -15,13 +15,11 @@ export default class CampaignNavElement extends React.Component {
             startCoords: {x: 0, y: 0},
         }
 
+        this.dragging = false;
         this.target = {};
-        this.getCampaignClick = this.getCampaignClick.bind(this);
         this.toggleCardForm = this.toggleCardForm.bind(this);
         this.delete = this.delete.bind(this);
     }
-
-    getCampaignClick(){ this.setState({active: !this.state.active}) }
 
     toggleCardForm() {
         this.props.setForm("card");
@@ -33,14 +31,20 @@ export default class CampaignNavElement extends React.Component {
     setDragging(x, y){ this.setState({ startCoords: {x: x, y: y} }); }
 
     drag = e => {
-        this.target.style.left = (e.pageX - this.state.startCoords.x) + "px";
-        this.target.style.top = (e.pageY - this.state.startCoords.y) + "px";
+        if(!this.dragging){
+            // this.props.toggleSidebar();
+            this.dragging = true;
+            this.setState({ active: false })
+        }
+
+        if(this.dragging){
+            this.target.style.top = (e.pageY - this.state.startCoords.y) + "px";
+            this.target.style.left = (e.pageX - this.state.startCoords.x) + "px";
+        }
     }
 
     render(){
-
         const dragStart = e => { 
-            // this.props.toggleSidebar();
             this.setDragging(e.pageX, e.pageY);
             this.target = e.target;
             document.addEventListener('mousemove', this.drag);
@@ -52,7 +56,11 @@ export default class CampaignNavElement extends React.Component {
             document.removeEventListener('mousemove', this.drag);
             e.target.style.left = "0px";
             e.target.style.top = "0px";
-            this.props.drop(this.props.values.id, "campaign", e.clientX, e.clientY);
+            if(this.dragging){
+                this.props.drop(this.props.values.id, "campaign", e.clientX, e.clientY);
+                this.dragging = false;
+            }
+            else { this.setState({active: !this.state.active}) }
         }
 
         return (

@@ -1,6 +1,5 @@
 from django.shortcuts import redirect
 from rest_framework.authtoken.models import Token
-from django.contrib.auth import logout
 
 def oauth(request):
     if(request.user.is_authenticated):
@@ -10,5 +9,4 @@ def oauth(request):
     return redirect("/login")
 
 def logout(request):
-    logout(request)
     return redirect("/")
